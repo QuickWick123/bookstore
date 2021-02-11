@@ -1,0 +1,11 @@
+
+*.log
+*.pot
+*.pyc
+__pycac
+local_s
+db.sqli
+db.sqli
+/media
+venv
+/static
