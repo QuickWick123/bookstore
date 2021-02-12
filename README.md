@@ -8,7 +8,7 @@ An online web application bookstore that will allow user to purchase the books, 
 ### 1. Download/install python 3.6+
 
 ### 2. Create/activate virtual environment CMD. Wiithin project root directory run the commands:  
-* python -m venv .\venv  
+* py -m venv .\venv  
 * .\venv\Scripts\activate  
 * (deactivate closes venv)
 
