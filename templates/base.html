@@ -1,0 +1,50 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CEN Bookstore</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <nav>
+      <input type="checkbox" id="show-search">
+      <input type="checkbox" id="show-menu">
+      <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <div class="content">
+      <div class="logo"><a href="#">CEN Bookstore</a></div>
+        <ul class="menus">
+          <li>
+            <a href="#" class="desktop-link">Account <i class="glyphicon glyphicon-user"></i></a>
+            <input type="checkbox" id="account-features">
+            <label for="account-features">Account</label>
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Wishlist</a></li>
+              <li><a href="#">Sign In</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="desktop-link">Cart</a>
+            <input type="checkbox" id="shopping-cart">
+            <label for="shopping-cart">Cart</label>
+          </li>
+        </ul>
+      </div>
+      <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search Books..." name="search">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    </nav>
+  </div>
+</body>
+</html>
