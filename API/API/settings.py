@@ -91,60 +91,6 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'postgres',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'postgres',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'postgres',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'postgres',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'postgres',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
 
 
 
