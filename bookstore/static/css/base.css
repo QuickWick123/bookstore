@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar{
+  background: #515151;
+  position: fixed;
+  width: 100%;
+}
+.navbar nav{
+  position: relative;
+  display: flex;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .content{
+  display: flex;
+  align-items: center;
+}
+nav .content .menus{
+  margin-left: 80px;
+  display: flex;
+}
+.content .logo a{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+.content .menus li{
+  list-style: none;
+  line-height: 70px;
+}
+.content .menus li a,
+.content .menus li label{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 9px 17px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.content .menus li label{
+  display: none;
+}
+.content .menus li a:hover,
+.content .menus li label:hover{
+  background: #323c4e;
+}
+.navbar .search-icon,
+.navbar .menu-icon{
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 70px;
+  width: 70px;
+  text-align: center;
+}
+.navbar .menu-icon{
+  display: none;
+}
+.navbar #show-search:checked ~ .search-icon i::before{
+  content: "\f00d";
+}
+
+.navbar .search-box{
+  position: absolute;
+  height: 100%;
+  max-width: calc(100% - 50px);
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.navbar #show-search:checked ~ .search-box{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar input[type="checkbox"]{
+  display:none;
+}
+
+/* Dropdown Menu code start */
+.content .menus ul{
+  position: absolute;
+  background: #171c24;
+  top: 80px;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+.content .menus li:hover > ul{
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+.content .menus ul li a{
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 0px!important;
+}
+.content .menus ul ul{
+  position: absolute;
+  top: 0;
+  right: calc(-100% + 8px);
+}
+.content .menus ul li{
+  position: relative;
+}
+.content .menus ul li:hover ul{
+  top: 0;
+}
+
+/* Responsive code start */
+@media screen and (max-width: 1250px){
+  .navbar nav{
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  nav .content .menus{
+    margin-left: 30px;
+  }
+  .content .menus li a{
+    padding: 8px 13px;
+  }
+  .navbar .search-box{
+    max-width: calc(100% - 100px);
+  }
+  .navbar .search-box input{
+    padding: 0 100px 0 15px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .navbar .menu-icon{
+    display: block;
+  }
+  .navbar #show-menu:checked ~ .menu-icon i::before{
+    content: "\f00d";
+  }
+  nav .content .menus{
+    display: block;
+    position: fixed;
+    background: #14181f;
+    height: 100%;
+    width: 100%;
+    top: 70px;
+    left: -100%;
+    margin-left: 0;
+    max-width: 350px;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    transition: all 0.3s ease;
+  }
+
+  .content .menus li{
+    margin: 15px 20px;
+  }
+  .content .menus li a,
+  .content .menus li label{
+    line-height: 40px;
+    font-size: 20px;
+    display: block;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+  .content .menus li a.desktop-link{
+    display: none;
+  }
+
+  /* dropdown responsive code start */
+  .content .menus ul,
+  .content .menus ul ul{
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0px;
+    overflow: hidden;
+  }
+  .content .menus #account-features:checked ~ ul,
+  .content .menus #shopping-cart:checked ~ ul,
+  .content .menus #show-items:checked ~ ul{
+    max-height: 100vh;
+  }
+  .content .menus ul li{
+    margin: 7px 20px;
+  }
+  .content .menus ul li a{
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px!important;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .navbar nav{
+    padding: 0 10px;
+  }
+  .content .logo a{
+    font-size: 27px;
+  }
+ 
+}
+.navbar .search-container button {
+  width:max-content;
+  height:max-content;
+  
+}

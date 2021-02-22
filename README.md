@@ -7,10 +7,17 @@ An online web application bookstore that will allow user to purchase the books, 
 ## For Windows:
 ### 1. Download/install python 3.6+
 
-### 2. Create/activate virtual environment CMD. Wiithin project root directory run the commands:  
+### 2. Create/activate virtual environment CMD. Wiithin project root directory run the commands: 
+Window:
 * py -m venv .\venv  
 * .\venv\Scripts\activate  
 * (deactivate closes venv)
+
+MacOS:
+*creating the virtual environment: python3 -m venv env
+*activate the virtual environment: source env/bin/activate (make sure that you are in the correct directory)
+*exiting the virtual environment: Ctrl + C into the terminal
+
 
 ### 3. To install dependencies, inside active venv run:  
 * pip install -r requirements.txt  
