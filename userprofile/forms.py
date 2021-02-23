@@ -1,8 +1,6 @@
-from django import forms
-from .models import MyModel
+from django.contrib.auth.forms import UserCreationForm
  
-class MyForm(forms.ModelForm):
-  class Meta:
-    model = MyModel
-    fields = ["fullname", "mobile_number",]
-    labels = {'fullname': "Name", "mobile_number": "Mobile Number",}
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password1', 'password2', )

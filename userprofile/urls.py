@@ -1,6 +1,8 @@
-from django.urls import path
 from . import views
-
+from django.conf.urls import url, include
+from django.urls import path
+ 
 urlpatterns = [
-    path('', views.userprofile, name='userprofile')
+    url(r'^$', views.index, name='home'),
+    path('signup/', views.signup, name='signup'), #added
 ]
