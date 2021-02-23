@@ -1,9 +1,10 @@
-<<<<<<< HEAD
-<h1> user profile page</h1>
-=======
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>This will be the user profile page</h1>
-{% endblock %}
->>>>>>> e849b0e13cd5ffb0a53431fc8d6ad7f87271c583
+<div class="container">
+    <form method="POST">
+      <fieldset>
+        <legend>Form</legend>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+</div>
