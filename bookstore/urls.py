@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 urlpatterns = [
     path('', include('pages.urls')),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('userprofile/', include('userprofile.urls')),
     path('wishlist/', include('wishlist.urls')),
     path('admin/', admin.site.urls),
-]
+    path('', include("bookstore_api.urls")) #what's the diff. between url what's here and: path(''
+    ]
