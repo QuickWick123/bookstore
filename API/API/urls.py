@@ -19,5 +19,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include('bookstore_api.urls')),
+    url('', include('bookstore_api.urls'))
 ]
