@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 
 def userprofile(request):
-    return render(request, 'pages/userprofile.html')
-
+    form = UserCreationForm()
+    return render(request, 'pages/userprofile.html', {'form': form})
