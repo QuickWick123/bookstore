@@ -14,5 +14,6 @@ urlpatterns = [
     path('book/', views.BookAPIView.as_view()),
     path('detail/<int:id>/', views.BookDetails.as_view()),
     path('generic/book/<int:id>/', views.GenericAPIView.as_view()),
-    #path('wishlist/', wishlist.views),
+    path('users/', users.UsersAPIView.as_view()),
+    path('userdetail/<int:id>/', users.userDetails.as_view())
 ]

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'shoppingcart.apps.ShoppingcartConfig',
     'userprofile.apps.UserprofileConfig',
     'wishlist.apps.WishlistConfig',
+    'sort.apps.SortConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

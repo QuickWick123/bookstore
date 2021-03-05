@@ -11,4 +11,4 @@ class BookSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfiles
-        fields = ['userName', 'password', 'firstName', 'lastName', 'emailAddress', 'homeAddress']
+        fields = '__all__'
