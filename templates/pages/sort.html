@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static%}
-
-<link rel="stylesheet" href="{% static 'css/sort.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/sort.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 {% block content %}
 <div class=sort-catagories>
     <div class="top-seller">
@@ -32,7 +35,18 @@
         <span class="fa fa-star"></span> 
     </div>  
 </div>
-<p>Title: {{ book.title }}</p>
+<div class="sort-display">
+    
+
+<ul>
+    {% for book in books.all %}
+      <li>
+        {{ book.title }}, {{ book.authors }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
 {% endblock content %}
 
+</html>
