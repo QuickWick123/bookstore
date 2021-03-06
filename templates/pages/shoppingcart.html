@@ -1,17 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Shopping Cart</h1>
-<h2>
+
+{% load static%}
+<!-- TESTING TEMPLATE -->
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<nav class="secondary_header" id="menu">
+  <ul>
+    <li>MY SHOPPING CART</li>
+    
+  </ul>
+</nav>
+</header>
+
+
+<section>
+<h2 class="noDisplay">Main Content</h2>
+
 <ul>
-    {% for item in books %}
-      <li>{{ item.title }}</li>
-      <img src= '{{ item.thumbnailUrl }}' ></img>
-      <li>{{ item.price }}</li>
-    {% endfor %}  
-    </ul>
-</h2>
-<!-- <h3> Shopping cart: {{ cartItems }}</h3> -->
+  {% for item in books %}
+  <div>
+    <article class="left_article">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.authors }}</p>
+    </article>
+    <aside class="right_article">
+      <img src='{{ item.thumbnailUrl }}' alt="" width="200" height="200" class="placeholder"/>
+      {{ item.shortDescription }}
+    </aside>
+      
+  </div>
+  {% endfor %}  
+  </ul>
+
+
+
+<!-- END OF TEMPLATE TESTING -->
+
 {% endblock content %}
 
 
