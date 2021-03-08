@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
+<!--
 {% load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'css/sort.css' %}">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
+-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 {% block content %}
-<div class=sort-catagories>
+<div class=sort-catagories style="border: bisque;">
     <div class="top-seller">
         <h4>Top Seller</h4>
         <p>CEN Top 10</p>
@@ -44,9 +44,10 @@
         {{ book.title }}, {{ book.authors }}
       </li>
     {% endfor %}
-  </ul>
+</ul>
+
 </div>
 
 {% endblock content %}
-
 </html>
+

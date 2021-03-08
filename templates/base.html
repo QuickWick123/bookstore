@@ -25,16 +25,23 @@
             <a href="{% url 'userprofile' %}" class="desktop-link">Account <i class="glyphicon glyphicon-user"></i></a>
             <input type="checkbox" id="account-features">
             <label for="account-features">Account</label>
+            <!--
             <ul>
               <li><a href="{% url 'userprofile' %}">Sign In</a></li>
               <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
               <li><a href="{% url 'userprofile' %}">My Account</a></li>
             </ul>
+            -->
           </li>
           <li>
             <a href="{% url 'shoppingcart' %}" class="desktop-link">Cart</a>
             <input type="checkbox" id="shopping-cart">
             <label for="shopping-cart">Cart</label>
+          </li>
+          <li>
+            <a href="{% url 'wishlist' %}" class="desktop-link">Wishlist</a>
+            <input type="checkbox" id="shopping-cart">
+            <label for="wishlist">Wishlist</label>
           </li>
         </ul>
       </div>
