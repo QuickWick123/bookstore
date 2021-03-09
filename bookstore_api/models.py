@@ -22,11 +22,5 @@ class UserProfiles(models.Model):
     lastName = models.CharField(max_length=100)
     emailAddress = models.CharField(max_length=100)
     homeAddress = models.CharField(max_length=100)
-    # cart = [{
-    # books = models.CharField(),
-    # quantity = models.IntegerField()
-    # }],
-    # saveForLater = [{
-    # book: Object,
-    # quantity: Number
-    # }]
+    cart = models.JSONField(null=True)
+    saveLater = models.JSONField(null=True)

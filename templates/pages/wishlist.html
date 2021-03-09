@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Wishlist: {{ book.price }}</h1>
+<h1>Wishlist 1</h1>
+<h2>Book Titles: {{ detail.title }}</h2>
+
+
+<ul>
+    {% for wishlist_item in all_items %}
+       <li>{{ wishlist_item.content }}
+            <form action="/deleteWishlist/{{wishlist_item.id}}/"
+                  style="display: inline;"
+                  method = "post">{% csrf_token %}
+                <input type="submit" value="Delete"/>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<form action="/addWishlist/" method = "post"> {% csrf_token %}
+                 <input type= "text" name="content"/>
+                <input type="submit" value="Add"/>
+            </form>
+
 {% endblock content %}

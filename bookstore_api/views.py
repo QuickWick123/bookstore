@@ -26,8 +26,7 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
     serializer_class = BookSerializer
     queryset = Book.objects.all()
     lookup_field = 'id'
-    # authentication_classes = [SessionAuthentication, BasicAuthentication]
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
