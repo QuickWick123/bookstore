@@ -1,8 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from rest_framework import status, generics, mixins
 from rest_framework.views import APIView
-from rest_framework.parsers import JSONParser
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import UserProfiles
 from .serializers import UserSerializer

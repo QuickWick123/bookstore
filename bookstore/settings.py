@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'shoppingcart.apps.ShoppingcartConfig',
     'userprofile.apps.UserprofileConfig',
+    'wishlist.apps.WishlistConfig',
+    'sort.apps.SortConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,8 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'wishlist'
-
+    'wishlist',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bookstoredb',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': 'Hiddenmist1@',
         'HOST': 'localhost',
         'PORT': '5432'
     }
