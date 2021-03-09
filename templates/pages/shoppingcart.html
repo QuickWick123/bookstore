@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Title: {{ book.price }}</h1>
+<h1>Shopping Cart</h1>
+<h2>
+<ul>
+    {% for item in books %}
+      <li>{{ item.title }}</li>
+      <img src= '{{ item.thumbnailUrl }}' ></img>
+      <li>{{ item.price }}</li>
+    {% endfor %}
+    </ul>
+</h2>
+<!-- <h3> Shopping cart: {{ cartItems }}</h3> -->
 {% endblock content %}
-
-
 
