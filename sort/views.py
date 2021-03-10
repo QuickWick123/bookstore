@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from bookstore_api.models import Book
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 
 
 
@@ -25,6 +26,7 @@ from django.http import HttpResponse
 class SearchResultsView(ListView):
    model = Book
    template_name = 'pages/sort.html'
+   paginate_by = 10
 
    def get_queryset(self): # new
       query = self.request.GET.get('q')
@@ -33,6 +35,13 @@ class SearchResultsView(ListView):
         )
       return object_list
 
+   def listing(self):
+    books = Book.objects.all()
+    paginator = Paginator(books, 10) # Show 25 contacts per page.
+
+    page_number = self.request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return page_obj
    # def get_queryset(self):
    #    query = query.self.request.GET.get('q')
    #    object_list = Book.objects.fitler(name__contains='')
