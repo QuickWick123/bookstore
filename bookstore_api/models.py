@@ -12,6 +12,7 @@ class Book(models.Model):
     authors = models.JSONField()
     categories = models.JSONField()
     price = models.FloatField(null=True)
+    rating = models.IntegerField()
 
 
 class UserProfiles(models.Model):
@@ -25,5 +26,3 @@ class UserProfiles(models.Model):
     saveLater = models.JSONField(null=True)
 
 
-class Rating(models.Model):
-    rating = models.IntegerField(max_length=5)

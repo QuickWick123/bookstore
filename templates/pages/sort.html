@@ -37,14 +37,26 @@
 </div>
 <div class="sort-display">
     
+    <h1>Search Results</h1>
 
+    <ul>
+      {% for book in object_list %}
+        <li>
+          {{book.title}} by 
+          {{ book.authors}}
+        </li>
+      {% endfor %}
+    </ul>
+<!--   
 <ul>
     {% for book in books.all %}
       <li>
-        {{ book.title }}, {{ book.authors }}
+        {{ book.rating }}
       </li>
     {% endfor %}
 </ul>
+--> 
+
 
 </div>
 

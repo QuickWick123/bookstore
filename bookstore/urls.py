@@ -23,7 +23,7 @@ urlpatterns = [
     path('shoppingcart/', include('shoppingcart.urls')),
     path('userprofile/', include('userprofile.urls')),
     path('wishlist/', include('wishlist.urls')),
-    path('sort/', include('sort.urls')),
+    path('search/', include('sort.urls')),
     path('admin/', admin.site.urls),
     path('', include("bookstore_api.urls")) #what's the diff. between url what's here and: path(''
     ]
