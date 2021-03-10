@@ -6,7 +6,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 
-
+def category_java(self):
+   return Book.objects.filter(categories__icontains='Java')
 
 # def sort(request):
 #    #   return render(request, 'pages/sort.html')
@@ -48,10 +49,9 @@ class BrowseResultsView(ListView):
    model = Book
    template_name = TEMPLATE_NAME
    def get_queryset(self): # new
-      category = self.request.GET.get('Java')
+     # category = self.request.GET.get('Web Development')
       book_list = Book.objects.filter(
-            Q(categories__icontains=category))
-        
+            Q(categories__icontains='Web Development'))
       return book_list
    # def get_queryset(self):
    #    query = query.self.request.GET.get('q')
