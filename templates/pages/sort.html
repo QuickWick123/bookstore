@@ -15,7 +15,17 @@
     </div>
     <div class="genre">
         <h4>Genre</h4>
-        <p>Mobile Developement</p>
+        <!--<a heref="{% url 'BroweseResultsView' %}">Mobile Developement
+            <ul>
+                {% for book in book_list %}
+                  <li>
+                    {{book.title}}
+                    {{ book.authors}}
+                    <img src= '{{ book.thumbnailUrl }}' ></img>
+                  </li>
+                {% endfor %}
+              </ul>
+        </a>-->
         <p>Framwork</p>
         <p>Programming Language</p>
         <p>Web Development</p>
@@ -37,13 +47,14 @@
 </div>
 <div class="sort-display">
     
-    <h1>Search Results</h1>
+    <h3>Search Results</h3>
 
     <ul>
       {% for book in object_list %}
         <li>
-          {{book.title}} by 
+          {{book.title}}
           {{ book.authors}}
+          <img src= '{{ book.thumbnailUrl }}' ></img>
         </li>
       {% endfor %}
     </ul>

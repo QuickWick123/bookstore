@@ -22,11 +22,12 @@ from django.core.paginator import Paginator
   
 #    return render(request, 'pages/sort.html', {'results': results})
 
+TEMPLATE_NAME = "pages/sort.html"
 
 class SearchResultsView(ListView):
    model = Book
-   template_name = 'pages/sort.html'
-   paginate_by = 10
+   template_name = 'pages/searchResults.html'
+   paginate_by = 3
 
    def get_queryset(self): # new
       query = self.request.GET.get('q')
@@ -37,11 +38,21 @@ class SearchResultsView(ListView):
 
    def listing(self):
     books = Book.objects.all()
-    paginator = Paginator(books, 10) # Show 25 contacts per page.
+    paginator = Paginator(books, 2) # Show 25 contacts per page.
 
     page_number = self.request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return page_obj
+    return render(self.request, 'list.html', {'page_obj': page_obj})
+
+class BrowseResultsView(ListView):
+   model = Book
+   template_name = TEMPLATE_NAME
+   def get_queryset(self): # new
+      category = self.request.GET.get('Java')
+      book_list = Book.objects.filter(
+            Q(categories__icontains=category))
+        
+      return book_list
    # def get_queryset(self):
    #    query = query.self.request.GET.get('q')
    #    object_list = Book.objects.fitler(name__contains='')
@@ -51,3 +62,6 @@ class SearchResultsView(ListView):
 #       searchResult= Book.objects.filter(name__icontains=q)
 #     else:
 #        searchResult= Book.objects.all()
+
+def searchview(request):
+   return render(request, 'pages/sort.html')
