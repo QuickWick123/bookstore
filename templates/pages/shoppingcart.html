@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 <nav class="secondary_header" id="menu">
   <ul>
-    <li>MY SHOPPING CART</li>
+    <li><h1>MY SHOPPING CART</h1></li>
     
   </ul>
 </nav>
@@ -18,23 +18,20 @@
 <h2 class="noDisplay">Main Content</h2>
 
 <ul>
-  {% for item in books %}
+  {% for item in cartItems %}
   <div>
     <article class="left_article">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.authors }}</p>
-    </article>
-    <aside class="right_article">
-      <img src='{{ item.thumbnailUrl }}' alt="" width="200" height="200" class="placeholder"/>
-      {{ item.shortDescription }}
-    </aside>
-      
+      <h1>{{ item.book.title }}</h1>
+      <p><h2>{{ item.book.price }}</p></h2>
+      <img src='{{ item.book.thumbnailUrl }}'>
+      <p>Q: {{ item.quantity}}</p>
+    </article>     
   </div>
-  {% endfor %}  
-  </ul>
+  {% endfor %}    
 
+</ul>
 
-
+<h1>CART TOTAL:</h1>
 <!-- END OF TEMPLATE TESTING -->
 
 {% endblock content %}
