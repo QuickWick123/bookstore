@@ -13,6 +13,7 @@ class Book(models.Model):
     categories = models.JSONField()
     price = models.FloatField(null=True)
     rating = models.IntegerField()
+    catetgory = models.CharField(max_length=100)
 
 
 class UserProfiles(models.Model):

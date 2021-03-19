@@ -1,4 +1,5 @@
 import requests
+import json
 from django.db.models import Q
 from django.views.generic.list import ListView
 from bookstore_api.models import Book
@@ -6,8 +7,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 
-def category_java(self):
-   return Book.objects.filter(categories__icontains='Java')
+
 
 # def sort(request):
 #    #   return render(request, 'pages/sort.html')
@@ -45,14 +45,32 @@ class SearchResultsView(ListView):
     page_obj = paginator.get_page(page_number)
     return render(self.request, 'list.html', {'page_obj': page_obj})
 
-class BrowseResultsView(ListView):
-   model = Book
-   template_name = TEMPLATE_NAME
-   def get_queryset(self): # new
-     # category = self.request.GET.get('Web Development')
-      book_list = Book.objects.filter(
-            Q(categories__icontains='Web Development'))
-      return book_list
+
+def browse_results_view(request):
+   book = Book.objects.all()
+   return render(request, TEMPLATE_NAME, {'book': book})
+
+def browse_by_category(request, catetgory):
+   if catetgory is not None:
+      result_list = Book.objects.filter(Q(catetgory__icontains=catetgory))
+      return render(request, TEMPLATE_NAME,{'result_list':result_list})
+   else:
+      browse_results_view(request)
+
+#  obj = requests.get('http://localhost:8000/book')
+#    for category in obj: 
+#       categories[category["categories"]] = category
+
+# class BrowseResultsView(ListView):
+#    model = Book
+#    template_name = TEMPLATE_NAME
+#    def get_queryset(self): # new
+#      #query = self.request.GET.get('q')
+#       query = self.request.GET.get('catetgory')
+#       object_list = Book.objects.filter(
+#             Q(catetgory__icontains=query))
+#       return object_list
+  
    # def get_queryset(self):
    #    query = query.self.request.GET.get('q')
    #    object_list = Book.objects.fitler(name__contains='')
