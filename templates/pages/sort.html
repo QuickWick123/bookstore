@@ -10,8 +10,8 @@
 <h2>Browse</h2>
 <ul class="sidebar-nav">
   <h4>Top Seller</h4>
-  <li><a href="{% url 'BroweseResultsView' %}">CEN Top 10</a></li>
-  <li><a href="">CEN Top 20</a></li>
+  <li><a href="{% url 'top_10_sellers' %}">CEN Top 10</a></li>
+  <li><a href="{% url 'top_20_sellers' %}">CEN Top 20</a></li>
 </ul>
 <ul class="sidebar-nav">
   <h4>Genre</h4>
@@ -19,40 +19,33 @@
     <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
   {% endfor %} 
 </ul>
-        <!--
-        <ul class="sidebar-nav">
-            <h4>Rating</h4>
-            <li><a href="">fa fa-star checked</a></li>
-            <li><a href="">$30 - $50</a></li>
-            <li><a href="">$50 - $100</a></li>
-        <form action="">
-          <label for="sort">Sort By:</label>
-          <select name="sort_category" id="sort_category_id">
-            <option value="sort_title">Title</option>
-            <option value="sort_athor">Author</option>
-            <option value="sort_price">Price</option>
-            <option value="sort_rating">Rating</option>
-            <option value="sort_date">Date</option>
-          </select>
-          <br><br>
-          <input type="submit" value="Submit">
-        </form> 
-      -->
 
-
-
-        <!--<a heref="{% url 'BroweseResultsView' %}">Mobile Developement
-            <ul>
-                {% for book in book_list %}
-                  <li>
-                    {{book.title}}
-                    {{ book.authors}}
-                    <img src= '{{ book.thumbnailUrl }}' ></img>
-                  </li>
-                {% endfor %}
-              </ul>
-        </a>-->
-        <ul>
+<ul>
+  {% for top10 in top_10_list|slice:"0:10" %}
+    <li>
+      Title: {{top10.title}} <br>
+      Author: {{top10.authors}}<br>
+      Rating: {{top10.rating}}<br>
+      Price: {{top10.price}}<br>
+      <img src= '{{ top10.thumbnailUrl }}'></img>
+    </li>
+    <br>
+{% endfor %}
+</ul>
+<ul>
+  {% for top20 in top_20_list|slice:"0:20" %}
+    <li>
+      Title: {{top20.title}} <br>
+      Author: {{top20.authors}}<br>
+      Rating: {{top20.rating}}<br>
+      Price: {{top20.price}}<br>
+      <img src= '{{ top20.thumbnailUrl }}' ></img>
+    </li>
+    <br>
+{% endfor %}
+</ul>      
+        
+    <ul>
           {% for result in result_list %}
             <li>
               Title: {{result.title}} <br>
@@ -63,7 +56,7 @@
             </li>
             <br>
     {% endfor %}
-        </ul>   
+    </ul>   
     <ul>
       {% for book in object_list %}
         <li>

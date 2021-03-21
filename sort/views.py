@@ -57,9 +57,14 @@ def browse_by_category(request, catetgory):
    else:
       browse_results_view(request)
 
-def top_10_seller(request):
+def top_10_sellers(request):
    top_10_list = Book.objects.all()
    return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
+
+def top_20_sellers(request):
+   top_20_list = Book.objects.all()
+   return render(request, TEMPLATE_NAME, {'top_20_list': top_20_list})
+
 
 #  obj = requests.get('http://localhost:8000/book')
 #    for category in obj: 
