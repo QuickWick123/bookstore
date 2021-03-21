@@ -17,27 +17,9 @@
   <h4>Genre</h4>
   {% for category in book|slice:"1:4" %}
     <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
-  {% endfor %}
+  {% endfor %} 
 </ul>
-        <!--<h2>Browse</h2>
-        <ul class="sidebar-nav">
-           
-          <h4>Top Seller</h4>
-          <li><a href="">CEN Top 10</a></li>
-          <li><a href="">CEN Top 20</a></li>
-        </ul>
-        <ul class="sidebar-nav">
-            <h4>Genre</h4>
-            <li><a href="{% url 'BroweseResultsView'%}">Framwork</a></li>
-            <li><a href="{% url 'BroweseResultsView'%}">Java</a></li>
-            <li><a href="{% url 'BroweseResultsView' %}">Web Development</a></li>
-        </ul>
-        <ul class="sidebar-nav">
-            <h4>Price</h4>
-            <li><a href="">$0 - $30</a></li>
-            <li><a href="">$30 - $50</a></li>
-            <li><a href="">$50 - $100</a></li>
-        </ul>
+        <!--
         <ul class="sidebar-nav">
             <h4>Rating</h4>
             <li><a href="">fa fa-star checked</a></li>
