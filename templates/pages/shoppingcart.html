@@ -4,16 +4,19 @@
 
 {% load static%}
 <!-- TESTING TEMPLATE -->
+<head>
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-<nav class="secondary_header" id="menu">
-  <ul>
-    <li><h1>MY SHOPPING CART</h1></li>
-    
-  </ul>
-</nav>
-</header>
+<header>
+  <nav class="secondary_header" id="menu">
+    <ul>
+      <li><h1>MY SHOPPING CART</h1></li>
+      
+    </ul>
+  </nav>
+  </header>
+</head>
 
-
+<body>
 <section>
 <h2 class="noDisplay">Main Content</h2>
 
@@ -22,9 +25,15 @@
   <div>
     <article class="left_article">
       <h1>{{ item.book.title }}</h1>
+
       <p><h2>{{ item.book.price }}</p></h2>
       <img src='{{ item.book.thumbnailUrl }}'>
-      <p>Q: {{ item.quantity}}</p>
+      <p>Q: {{ item.quantity}}
+
+        <a href="{% url 'deleteItem' item.book.id %}">
+          <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+        </a>
+      </p>
     </article>     
   </div>
   {% endfor %}    
@@ -32,6 +41,8 @@
 </ul>
 
 <h1>CART TOTAL:</h1>
+
+</body>
 <!-- END OF TEMPLATE TESTING -->
 
 {% endblock content %}

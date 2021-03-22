@@ -6,5 +6,7 @@ urlpatterns = [
     path('detail/<int:id>/', views.BookDetails.as_view()),
     path('generic/book/', views.GenericAPIView.as_view()),
     path('users/', users.UsersAPIView.as_view()),
-    path('userdetail/<int:id>/', users.userDetails.as_view())
+    path('userdetail/<int:id>/', users.userDetails.as_view()),
+    path('usercart/<int:id>/', users.userCart.as_view(), name="usercart") #new class for user cart API
+
 ]
