@@ -1,17 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Shopping Cart</h1>
-<h2>
-<ul>
-    {% for item in books %}
-      <li>{{ item.title }}</li>
-      <img src= '{{ item.thumbnailUrl }}' ></img>
-      <li>{{ item.price }}</li>
-    {% endfor %}  
+
+{% load static%}
+<!-- TESTING TEMPLATE -->
+<head>
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<header>
+  <nav class="secondary_header" id="menu">
+    <ul>
+      <li><h1>MY SHOPPING CART</h1></li>
+      
     </ul>
-</h2>
-<!-- <h3> Shopping cart: {{ cartItems }}</h3> -->
+  </nav>
+  </header>
+</head>
+
+<body>
+<section>
+<h2 class="noDisplay">Main Content</h2>
+
+<ul>
+  {% for item in cartItems %}
+  <div>
+    <article class="left_article">
+      <h1>{{ item.book.title }}</h1>
+
+      <p><h2>{{ item.book.price }}</p></h2>
+      <img src='{{ item.book.thumbnailUrl }}'>
+      <p>Q: {{ item.quantity}}
+
+        <a href="{% url 'deleteItem' item.book.id %}">
+          <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+        </a>
+      </p>
+    </article>     
+  </div>
+  {% endfor %}    
+
+</ul>
+
+<h1>CART TOTAL:</h1>
+
+</body>
+<!-- END OF TEMPLATE TESTING -->
+
 {% endblock content %}
 
 
