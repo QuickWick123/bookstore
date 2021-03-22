@@ -1,0 +1,13 @@
+*{
+    display:flex;
+    margin: 0;
+    padding: 100px; 
+    background-color:aqua;  
+}
+.sort-catagories{
+  position:fixed;
+  width: 100%;
+}
+.sort-catagories .rating{
+    color:orange;
+}
