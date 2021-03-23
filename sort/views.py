@@ -49,10 +49,10 @@ def top_10_sellers(request):
    return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
 
 
-def top_20_sellers(request):
+def top_20_sellers(request, page=None):
    top_20_list = Book.objects.all()
    top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
-   page_num = request.GET.get('page')
+   page_num = request.GET.get(page)
    page = top_20_list_paginator.get_page(page_num)
    context = {
       'count' : top_20_list_paginator.count,
@@ -60,3 +60,5 @@ def top_20_sellers(request):
    }
    return render(request, TEMPLATE_NAME, context)
 
+def rating(request):
+   return render(request, TEMPLATE_NAME)
