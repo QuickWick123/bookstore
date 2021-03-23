@@ -26,7 +26,7 @@
     <article class="left_article">
       <h1>{{ item.book.title }}</h1>
 
-      <p><h2>{{ item.book.price }}</p></h2>
+      <p><h2>$ {{ item.book.price }}</p></h2>
       <img src='{{ item.book.thumbnailUrl }}'>
       <p>Q: {{ item.quantity}}
 
@@ -40,10 +40,9 @@
 
 </ul>
 
-<h1>CART TOTAL:</h1>
+<h1>CART TOTAL: $ {{ cartTotal }}</h1> 
 
 </body>
-<!-- END OF TEMPLATE TESTING -->
 
 {% endblock content %}
 
