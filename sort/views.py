@@ -60,5 +60,23 @@ def top_20_sellers(request, page=None):
    }
    return render(request, TEMPLATE_NAME, context)
 
-def rating(request):
-   return render(request, TEMPLATE_NAME)
+def rating5(request):
+      rating5_book_list = Book.objects.filter(Q(rating__icontains=5))
+      return render(request, TEMPLATE_NAME, {'rating5_book_list': rating5_book_list})
+
+def rating4(request):
+      rating4_book_list = Book.objects.filter(Q(rating__icontains=4))
+      return render(request, TEMPLATE_NAME, {'rating4_book_list': rating4_book_list})
+
+def rating3(request):
+      rating3_book_list = Book.objects.filter(Q(rating__icontains=3))
+      return render(request, TEMPLATE_NAME, {'rating3_book_list': rating3_book_list})
+
+def rating2(request):
+      rating2_book_list = Book.objects.filter(Q(rating__icontains=2))
+      return render(request, TEMPLATE_NAME, {'rating2_book_list': rating2_book_list})
+
+def rating1(request):
+      rating1_book_list = Book.objects.filter(Q(rating__icontains=1))
+      return render(request, TEMPLATE_NAME, {'rating1_book_list': rating1_book_list})
+

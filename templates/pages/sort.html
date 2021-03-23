@@ -22,33 +22,94 @@
 {%block rating_detail%}
 <ul>
   <h4>Rating</h4>
-  <a href="{% url 'rating' %}"><span class="fa fa-star checked"></span>
+  <a href="{% url 'rating5' %}"><span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
   </a><br>
 
-  <a href="{% url 'rating' %}"><span class="fa fa-star checked"></span>
+  <a href="{% url 'rating4' %}"><span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
   </a><br>
 
-  <a href="{% url 'rating' %}"><span class="fa fa-star checked"></span>
+  <a href="{% url 'rating3' %}"><span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
   </a><br>
 
-  <a href="{% url 'rating' %}"><span class="fa fa-star checked"></span>
+  <a href="{% url 'rating2' %}"><span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
   </a><br>
 
-  <a href="{% url 'rating' %}"><span class="fa fa-star checked"></span></a><br>
-
+  <a href="{% url 'rating1'%}"><span class="fa fa-star checked"></span>
+  </a><br>
 
 </ul>
 {% endblock %}
+
+<ul>
+  {% for rating5 in rating5_book_list %}
+  <li>
+    Title: {{rating5.title}} <br>
+    Author: {{rating5.authors}}<br>
+    Rating: {{rating5.rating}}<br>
+    Price: {{rating5.price}}<br>
+    <img src='{{ rating5.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating4 in rating4_book_list %}
+  <li>
+    Title: {{rating4.title}} <br>
+    Author: {{rating4.authors}}<br>
+    Rating: {{rating4.rating}}<br>
+    Price: {{rating4.price}}<br>
+    <img src='{{ rating4.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating3 in rating3_book_list %}
+  <li>
+    Title: {{rating3.title}} <br>
+    Author: {{rating3.authors}}<br>
+    Rating: {{rating3.rating}}<br>
+    Price: {{rating3.price}}<br>
+    <img src='{{ rating3.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating2 in rating2_book_list %}
+  <li>
+    Title: {{rating2.title}} <br>
+    Author: {{rating2.authors}}<br>
+    Rating: {{rating2.rating}}<br>
+    Price: {{rating2.price}}<br>
+    <img src='{{ rating2.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating1 in rating1_book_list %}
+  <li>
+    Title: {{rating1.title}} <br>
+    Author: {{rating1.authors}}<br>
+    Rating: {{rating1.rating}}<br>
+    Price: {{rating1.price}}<br>
+    <img src='{{ rating1.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
 <ul>
   {% for top10 in top_10_list|slice:"0:10" %}
   <li>
