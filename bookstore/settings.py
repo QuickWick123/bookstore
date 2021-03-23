@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookstore_api.apps.BookstoreApiConfig',
     'corsheaders',
-    'star_ratings',
 ]
 
 MIDDLEWARE = [
