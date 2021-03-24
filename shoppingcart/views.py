@@ -36,7 +36,6 @@ def cartTotal():
     userInfo = response.json()
     cart = userInfo["cart"] 
 
-
     i = 0
     total = 0
     for item in cart:
@@ -49,5 +48,6 @@ def cartTotal():
         total = subTotal + total
         #print(quantity, item, subTotal, cartTotal)
         i += 1
+        cartTotalFormatted = "{:.2f}".format(total)
         
-    return total
+    return cartTotalFormatted
