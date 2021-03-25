@@ -2,14 +2,14 @@
 
 {% block content %}
 <div class="content-section">
-  <form action="POST">
+  <form action="userprofile">
     {%csrf_token %}
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Create Profile</legend>
       {{ form.as_p }}
     </fieldset>
     <div class="form-group">
-      <button class="btn btn-outline-info" type="submit">Sign Up</button>
+      <button class="btn btn-outline-info" type="submit"><a href="{% url 'userprofile' %}" class="desktop-link"></a>Sign Up</button>
     </div>
   </form>
   <div class="border-top pt-3">
