@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookstore_api.apps.BookstoreApiConfig',
     'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bookstoredb',
         'USER': 'postgres',
-        'PASSWORD': 'cenproject',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432'
     }
