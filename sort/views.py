@@ -80,3 +80,21 @@ def rating1(request):
       rating1_book_list = Book.objects.filter(Q(rating__icontains=1))
       return render(request, TEMPLATE_NAME, {'rating1_book_list': rating1_book_list})
 
+
+def sort(request):
+   query = request.GET.get('sort_filed')
+   print(query)
+
+   return render(request, TEMPLATE_NAME)
+class SortResultsView(ListView):
+   model = Book
+   template_name = TEMPLATE_NAME
+
+   def get_queryset(self): # new
+         query = self.request.GET.get('sortBy')
+         print(query)
+         sort_list = Book.objects.filter(
+               Q(title__icontains=query) | Q(authors__icontains=query)
+         )
+         return sort_list
+      

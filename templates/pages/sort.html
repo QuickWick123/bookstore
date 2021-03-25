@@ -49,7 +49,20 @@
 
 </ul>
 {% endblock %}
-
+<!--Displaying Sort By category-->
+<form action="{% url 'sort' %}">
+  <label for="sort_list">Sort By:</label>
+  <select name="sort_filed">
+    <option value="title_a-z">Title: 'A-Z'</option>
+    <option value="author">Author</option>
+    <option value="price_low_to_high">Price: Low to High</option>
+    <option value="price_high_to_low">Price: High to Low</option>
+    <option value="rating_low_to_high">Rating: Low to High</option>
+    <option value="rating_high_to_low">Rating: High to Low</option>
+  </select>
+  <input type="submit" value="Sort">
+</form>
+<!--Displaying Sort By category code end-->
 <ul>
   {% for rating5 in rating5_book_list %}
   <li>
@@ -134,21 +147,7 @@
   <br>
   {% endfor %}
 </ul>
-<!--Displaying Sort By category-->
-<form action="">
-  <label for="sort_list">Sort By:</label>
-  <select name="sort_filed" id="cars">
-    <option value="title_a-z">Title: 'A-Z'</option>
-    <option value="author">Author</option>
-    <option value="price_low_to_high">Price: Low to High</option>
-    <option value="price_high_to_low">Price: High to Low</option>
-    <option value="rating_low_to_high">Rating: Low to High</option>
-    <option value="rating_high_to_low">Rating: High to Low</option>
-  </select>
-  <br><br>
-  <input type="submit" value="Sort">
-</form>
-<!--Displaying Sort By category code end-->
+
 
 <!--Displaying result from each category-->
 <ul>
