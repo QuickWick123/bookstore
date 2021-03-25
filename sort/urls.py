@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import SearchResultsView, browse_results_view, browse_by_category, top_10_sellers, top_20_sellers, rating5, rating4, rating3, rating2,rating1, SortResultsView, sort
+from .views import SearchResultsView, browse_results_view, browse_by_category, top_10_sellers, top_20_sellers, rating5, rating4, rating3, rating2,rating1, sort
 from . import views
 
 urlpatterns = [
@@ -14,7 +14,6 @@ urlpatterns = [
     path('rating2/', views.rating2, name='rating2'),
     path('rating1/', views.rating1, name='rating1'),
     path('searchView/', views.searchview, name= 'searchView'),
-    path('sortBy/', views.sort, name='sort'),
     path(r'', views.browse_results_view, name='BroweseResultsView'),
     path(r'search/', SearchResultsView.as_view(), name='SearchResultsView'),
     

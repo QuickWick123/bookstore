@@ -50,11 +50,12 @@
 </ul>
 {% endblock %}
 <!--Displaying Sort By category-->
-<form action="{% url 'sort' %}">
+<form action="">
   <label for="sort_list">Sort By:</label>
   <select name="sort_filed">
     <option value="title_a-z">Title: 'A-Z'</option>
     <option value="author">Author</option>
+    <option value="release_date">Released Date</option>
     <option value="price_low_to_high">Price: Low to High</option>
     <option value="price_high_to_low">Price: High to Low</option>
     <option value="rating_low_to_high">Rating: Low to High</option>
@@ -70,6 +71,7 @@
     Author: {{sort.authors}}<br>
     Rating: {{sort.rating}}<br>
     Price: {{sort.price}}<br>
+    Released Date: {{sort.publishedDate}}<br>
     <img src='{{ sort.thumbnailUrl }}'></img>
   </li>
   <br>
