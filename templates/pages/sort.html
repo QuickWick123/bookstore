@@ -64,6 +64,18 @@
 </form>
 <!--Displaying Sort By category code end-->
 <ul>
+  {% for sort in sort_list %}
+  <li>
+    Title: {{sort.title}} <br>
+    Author: {{sort.authors}}<br>
+    Rating: {{sort.rating}}<br>
+    Price: {{sort.price}}<br>
+    <img src='{{ sort.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
   {% for rating5 in rating5_book_list %}
   <li>
     Title: {{rating5.title}} <br>

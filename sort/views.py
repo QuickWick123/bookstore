@@ -45,8 +45,8 @@ def browse_by_category(request, catetgory):
       browse_results_view(request)
 
 def top_10_sellers(request):
-   top_10_list = Book.objects.all()
-   return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
+      top_10_list = Book.objects.all()
+      return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
 
 
 def top_20_sellers(request, page=None):
@@ -83,9 +83,29 @@ def rating1(request):
 
 def sort(request):
    query = request.GET.get('sort_filed')
-   print(query)
+   sort_list = Book.objects.all()
+   if query is not None:
+      if query == "title_a-z":
+         sort_list = Book.objects.order_by('title')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+      elif query == 'author': 
+         sort_list = Book.objects.order_by('authors')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+      elif query == 'price_low_to_high':
+         sort_list = Book.objects.order_by('price')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+      elif query == 'price_high_to_low':
+         sort_list = Book.objects.order_by('-price')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+      elif query == 'rating_low_to_high':
+         sort_list = Book.objects.order_by('rating')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+      elif query == 'rating_high_to_low':
+         sort_list = Book.objects.order_by('-rating')
+         return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
+   else:
+      return render(request, TEMPLATE_NAME, {'sort_list': sort_list})
 
-   return render(request, TEMPLATE_NAME)
 class SortResultsView(ListView):
    model = Book
    template_name = TEMPLATE_NAME
