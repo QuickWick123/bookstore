@@ -10,3 +10,5 @@ db.sqli
 venv
 env
 /static
+.DS_Store
+.env
