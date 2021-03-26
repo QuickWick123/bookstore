@@ -15,7 +15,7 @@
 </ul>
 <ul class="sidebar-nav">
   <h4>Genre</h4>
-  {% for category in book|slice:"1:4" %}
+  {% for category in book|slice:"0:4" %}
   <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
   {% endfor %}
 </ul>
