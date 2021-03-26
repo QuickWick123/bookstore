@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <h1><a class="article-title">Wishlist Page Feature</a></h1>
+
+ <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ object.user  }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2 class="article-title">{{ object.name  }}</h2>
+            <p class="article-content">{{ object.books }}</p>
+          </div>
+        </article>
+
+
+
+<!--body>
+    {% for item in books %}
+      <li>{{ item.title }}&nbsp;{{ item.price }}</li>
+    {% endfor %}
+    </ul>
+</body> -->
+{% endblock content %}
