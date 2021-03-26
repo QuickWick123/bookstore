@@ -1,25 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Wishlist 1</h1>
-<h2>Book Titles: {{ detail.title }}</h2>
 
-
+         <h1><a class="article-title">Wishlist Page Feature</a></h1>
+<h2>
 <ul>
-    {% for wishlist_item in all_items %}
-       <li>{{ wishlist_item.content }}
-            <form action="/deleteWishlist/{{wishlist_item.id}}/"
-                  style="display: inline;"
-                  method = "post">{% csrf_token %}
-                <input type="submit" value="Delete"/>
-            </form>
-        </li>
+    <h3><a class="article-title">Wishlist Name: Computer Science Books</a></h3>
+  {% for item in books %}
+    <li><h2>Book: {{ item.title }}&nbsp; <img src= '{{ item.thumbnailUrl }}' ></img> Price:{{ item.price }}</h2> </li>
     {% endfor %}
-</ul>
+     </ul>
+</h2>
+    {% for wishlist in wishlists %}
+ <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ wishlist.user  }}</a>
+              <small class="text-muted">{{ wishlist.date_posted|date:"F d, Y"  }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ wishlist.name  }}</a></h2>
+            <p class="article-content">{{ wishlist.books }}</p>
+          </div>
+        </article>
+{% endfor %}
 
-<form action="/addWishlist/" method = "post"> {% csrf_token %}
-                 <input type= "text" name="content"/>
-                <input type="submit" value="Add"/>
-            </form>
 
+
+<!--body>
+    {% for item in books %}
+      <li>{{ item.title }}&nbsp;{{ item.price }}</li>
+    {% endfor %}
+    </ul>
+</body> -->
 {% endblock content %}
