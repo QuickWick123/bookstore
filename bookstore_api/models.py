@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.db import models
 
 
@@ -25,6 +24,4 @@ class UserProfiles(models.Model):
     homeAddress = models.CharField(max_length=100)
     cart = models.JSONField(null=True)
     saveLater = models.JSONField(null=True)
-    wishlist = models.JSONField(null=True)
-    date_created = models.DateTimeField(default=timezone.now)
 
