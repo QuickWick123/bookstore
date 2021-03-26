@@ -102,12 +102,26 @@ class userCart(APIView):
             print(type(dic["book"]), "=", type(removeIndex["book"]))
             if int(dic["book"]) == int(removeIndex["book"]):
                 oldCart.pop(i)
-                print(oldCart)
                 user.cart = oldCart
                 user.save()
-                print("complete")
                 return Response(user.cart, status = status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
 
 
+    def patch(self, request, id):
 
+        user = self.get_object(id)
+        cart = user.cart
+        updateDic = request.data
+        print(updateDic)
+        print(cart)
+        print(updateDic["quantity"])
+
+        for i, dic in enumerate(cart):
+            print(type(dic["book"]), "=", type(updateDic["book"]))
+            if int(dic["book"]) == int(updateDic["book"]):
+                dic["quantity"] = updateDic["quantity"]
+                user.save()
+                print("SUCCESS!!")
+                return Response(user.cart, status = status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
