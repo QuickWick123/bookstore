@@ -4,6 +4,7 @@ from .views import GenericAPIView
 from .views import BookViewSet
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import include
+from bookstore_api import users
 
 router = DefaultRouter()
 router.register('book', BookViewSet, basename='book')
