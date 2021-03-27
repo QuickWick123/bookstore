@@ -24,7 +24,6 @@ urlpatterns = [
     path('userprofile/', include('userprofile.urls')),
     path('wishlist/', include('wishlist.urls')),
     path('browse/', include('sort.urls')),
-    path('booksview/', include('booksview.urls')),
     path('admin/', admin.site.urls),
     path('', include("bookstore_api.urls"))
     ]
