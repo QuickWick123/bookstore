@@ -58,13 +58,14 @@ def top_10_sellers(request):
          return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
 
 
-def top_20_sellers(request, page=None):
+def top_20_sellers(request):
    top_20_list = Book.objects.all()
    query = request.GET.get('sort_filed')
    if query is not None:
       top_20_list = sort(request, top_20_list)
       top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
-      page_num = request.GET.get(page)
+      page_num = request.get('page')
+      print(page_num)
       page = top_20_list_paginator.get_page(page_num)
       context = {
          'count' : top_20_list_paginator.count,
@@ -73,7 +74,8 @@ def top_20_sellers(request, page=None):
       return render(request, TEMPLATE_NAME, context)
    else:
       top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
-      page_num = request.GET.get(page)
+      page_num = request.GET.get('page')
+      print(page_num)
       page = top_20_list_paginator.get_page(page_num)
       context = {
          'count' : top_20_list_paginator.count,
@@ -140,7 +142,7 @@ def sort(request, model):
          sort_list = sort_list.order_by('title')
          return sort_list
       elif query == 'author': 
-         sort_list = sort_list.order_by('-authors')
+         sort_list = sort_list.order_by('authorName')
          return sort_list
       elif query == 'price_low_to_high':
          sort_list = sort_list.order_by('price')
@@ -155,7 +157,7 @@ def sort(request, model):
          sort_list = sort_list.order_by('-rating')
          return sort_list
       elif query == 'release_date':
-         sort_list = sort_list.order_by('-publishedDate')
+         sort_list = sort_list.order_by('-publishDate')
          return sort_list
    else:
       return render(request, TEMPLATE_NAME, {'sort_list': sort_list})

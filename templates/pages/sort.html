@@ -53,8 +53,8 @@
 <form action="">
   <label for="sort_list">Sort By:</label>
   <select name="sort_filed">
-    <option value="title_a-z">Title: 'A-Z'</option>
-    <option value="author">Author</option>
+    <option value="title_a-z">Title: A-Z</option>
+    <option value="author">Author Name: A-Z</option>
     <option value="release_date">Released Date</option>
     <option value="price_low_to_high">Price: Low to High</option>
     <option value="price_high_to_low">Price: High to Low</option>
@@ -68,10 +68,10 @@
   {% for sort in sort_list %}
   <li>
     Title: {{sort.title}} <br>
-    Author: {{sort.authors}}<br>
+    Author: {{sort.authorName}}<br>
     Rating: {{sort.rating}}<br>
-    Price: {{sort.price}}<br>
-    Released Date: {{sort.publishedDate}}<br>
+    Price: ${{sort.price}}<br>
+    Released Date: {{sort.publishDate}}<br>
     <img src='{{ sort.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -81,9 +81,10 @@
   {% for rating5 in rating5_book_list %}
   <li>
     Title: {{rating5.title}} <br>
-    Author: {{rating5.authors}}<br>
+    Author: {{rating5.authorName}}<br>
     Rating: {{rating5.rating}}<br>
     Price: {{rating5.price}}<br>
+    Released Date: {{rating5.publishDate}}<br>
     <img src='{{ rating5.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -93,9 +94,10 @@
   {% for rating4 in rating4_book_list %}
   <li>
     Title: {{rating4.title}} <br>
-    Author: {{rating4.authors}}<br>
+    Author: {{rating4.authorName}}<br>
     Rating: {{rating4.rating}}<br>
-    Price: {{rating4.price}}<br>
+    Price: ${{rating4.price}}<br>
+    Released Date: {{rating4.publishDate}}<br>
     <img src='{{ rating4.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -105,9 +107,10 @@
   {% for rating3 in rating3_book_list %}
   <li>
     Title: {{rating3.title}} <br>
-    Author: {{rating3.authors}}<br>
+    Author: {{rating3.authorName}}<br>
     Rating: {{rating3.rating}}<br>
-    Price: {{rating3.price}}<br>
+    Price: ${{rating3.price}}<br>
+    Released Date: {{rating3.publishDate}}<br>
     <img src='{{ rating3.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -117,9 +120,10 @@
   {% for rating2 in rating2_book_list %}
   <li>
     Title: {{rating2.title}} <br>
-    Author: {{rating2.authors}}<br>
+    Author: {{rating2.authorName}}<br>
     Rating: {{rating2.rating}}<br>
-    Price: {{rating2.price}}<br>
+    Price: ${{rating2.price}}<br>
+    Released Date: {{rating2.publishDate}}<br>
     <img src='{{ rating2.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -129,9 +133,10 @@
   {% for rating1 in rating1_book_list %}
   <li>
     Title: {{rating1.title}} <br>
-    Author: {{rating1.authors}}<br>
+    Author: {{rating1.authorName}}<br>
     Rating: {{rating1.rating}}<br>
-    Price: {{rating1.price}}<br>
+    Price: ${{rating1.price}}<br>
+    Released Date: {{rating1.publishDate}}<br>
     <img src='{{ rating1.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -141,9 +146,10 @@
   {% for top10 in top_10_list|slice:"0:10" %}
   <li>
     Title: {{top10.title}} <br>
-    Author: {{top10.authors}}<br>
+    Author: {{top10.authorName}}<br>
     Rating: {{top10.rating}}<br>
-    Price: {{top10.price}}<br>
+    Price: ${{top10.price}}<br>
+    Released Date: {{top10.publishDate}}<br>
     <img src='{{ top10.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -153,9 +159,10 @@
   {% for top20 in page.object_list|slice:"0:20" %}
   <li>
     Title: {{top20.title}} <br>
-    Author: {{top20.authors}}<br>
+    Author: {{top20.authorName}}<br>
     Rating: {{top20.rating}}<br>
     Price: {{top20.price}}<br>
+    Released Date: {{top20.publishDate}}<br>
     <img src='{{ top20.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -168,9 +175,10 @@
   {% for result in result_list %}
   <li>
     Title: {{result.title}} <br>
-    Author: {{result.authors}}<br>
+    Author: {{result.authorName}}<br>
     Rating: {{result.rating}}<br>
-    Price: {{result.price}}<br>
+    Price: ${{result.price}}<br>
+    Released Date: {{result.publishDate}}<br>
     <img src='{{ result.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -182,9 +190,10 @@
   {% for book in object_list %}
   <li>
     Title: {{book.title}} <br>
-    Author: {{ book.authors}}<br>
+    Author: {{ book.authorName}}<br>
     Rating: {{book.rating}}<br>
-    Price: {{book.price}}<br>
+    Price: ${{book.price}}<br>
+    Released Date: {{book.publishDate}}<br>
     <img src='{{ book.thumbnailUrl }}'></img>
   </li>
   <br>
@@ -197,8 +206,8 @@
 <div class="page-link">
   <span class="step-links">
     {% if page.has_previous %}
-    <a href="{% url 'top_20_sellers' %} page={{page.previous_page_number }}"> Previous</a>
-    <a href="{% url 'top_20_sellers' %} page={{page.previous_page_number }}">previous</a>
+    <a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}"> Previous</a>
+    <a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}">previous</a>
     {% endif %}
 
     <span class="current">
@@ -206,8 +215,8 @@
     </span>
 
     {% if page.has_next %}
-    <a href="{% url 'top_20_sellers' %} page={{page.next_page_number }}">Next</a>
-    <a href="{% url 'top_20_sellers' %} page={{page.paginator.num_pages }}">Last </a>
+    <a href="{% url 'top_20_sellers' %}page={{page.next_page_number }}">Next</a>
+    <a href="{% url 'top_20_sellers' %}page={{page.paginator.num_pages }}">Last </a>
     {% endif %}
   </span>
 </div>

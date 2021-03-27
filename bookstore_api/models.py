@@ -20,7 +20,8 @@ class Book(models.Model):
     orderid = models.ForeignKey('Orderplaced', models.DO_NOTHING, db_column='orderid', blank=True, null=True)
     cartid = models.ForeignKey('Cart', models.DO_NOTHING, db_column='cartid', blank=True, null=True)
     commentsid = models.ForeignKey('Comments', models.DO_NOTHING, db_column='commentsid', blank=True, null=True)
-
+    authorName = models.CharField(max_length=100)
+    publishDate = models.DateField()
 
 class UserProfiles(models.Model):
     userName = models.CharField(db_column='userName', max_length=100)
