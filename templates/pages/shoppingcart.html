@@ -40,6 +40,9 @@
       <a href="{% url 'deleteItem' item.book.id %}">
         <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
       </a>
+      <a href="{% url 'saveLater' item.book.id %}">
+        <button class="button buttonAdd" type="submit" name="save4Later">Save for Later</button>
+      </a>
     </article>     
   </div>
   {% endfor %}    
@@ -48,6 +51,19 @@
 
 <h1>CART TOTAL: $ {{ cartTotal }}</h1> 
 
+
+<h1>SAVE FOR LATER ITEMS: {{ later }}</h1> 
+{% for item in laterItems %}
+<h1>{{ item.book.title }}</h1>
+<img src='{{ item.book.thumbnailUrl }}'>
+</p>
+<a href="{% url 'deleteLater' item.book.id %}">
+  <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+</a>
+<a href="{% url 'moveToCart' item.book.id %}">
+  <button class="button buttonAdd" type="submit" name="moveToCart">Move To Cart</button>
+</a>
+{% endfor %} 
 </body>
 
 {% endblock content %}

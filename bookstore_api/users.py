@@ -125,3 +125,39 @@ class userCart(APIView):
                 print("SUCCESS!!")
                 return Response(user.cart, status = status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
+
+#NEW CLASS FOR SAVE FOR LATER
+
+class userSaveLater(APIView):
+
+    def get_object(self, id):
+        try:
+            return UserProfiles.objects.get(id=id)
+
+        except UserProfiles.DoesNotExist:
+            return HttpResponse(status= status.HTTP_204_NO_CONTENT)
+
+
+    def post(self, request, id): #Posts item to save for later list
+        
+        user = self.get_object(id)
+        newItem = request.data
+        laterCart = user.saveLater
+        laterCart.append(newItem)
+        user.saveLater = laterCart
+        user.save()
+        return Response(user.saveLater, status = status.HTTP_200_OK)
+
+    def delete(self, request, id):#deletes item from save for later list
+
+        user = self.get_object(id)
+        removeIndex = request.data
+        oldLater = user.saveLater
+        for i, dic in enumerate(oldLater):
+            print(type(dic["book"]), "=", type(removeIndex["book"]))
+            if int(dic["book"]) == int(removeIndex["book"]):
+                oldLater.pop(i)
+                user.saveLater = oldLater
+                user.save()
+                return Response(user.saveLater, status = status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
