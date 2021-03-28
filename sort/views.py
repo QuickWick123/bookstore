@@ -23,13 +23,6 @@ class SearchResultsView(ListView):
         )
       return object_list
 
-   # def listing(self):
-   #  books = Book.objects.all()
-   #  paginator = Paginator(books, 2) # Show 25 contacts per page.
-   #  page_number = self.request.GET.get('page')
-   #  page_obj = paginator.get_page(page_number)
-   #  return render(self.request, 'list.html', {'page_obj': page_obj})
-
 def searchview(request):
    return render(request, 'pages/sort.html')
 
@@ -48,14 +41,31 @@ def browse_by_category(request, catetgory):
       return render(request, TEMPLATE_NAME,{'result_list':result_list})
 
 def top_10_sellers(request):
+      top_10_list = Book.objects.all()
       query = request.GET.get('sort_filed')
       if query is not None:
-         top_10_list = Book.objects.all()
          top_10_list = sort(request, top_10_list)
-         return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
+         top_10_list_paginator = Paginator(top_10_list, 10) # Show 25 contacts per page.
+         page_num = request.GET.get('button')
+         if page_num is None:
+            page_num = 1
+         print(page_num)
+         page = top_10_list_paginator.get_page(page_num)
+         context = {
+            'count' : top_10_list_paginator.count,
+            'page' : page
+         }
+         return render(request, TEMPLATE_NAME, context)
       else:
-         top_10_list = Book.objects.all()
-         return render(request, TEMPLATE_NAME, {'top_10_list': top_10_list})
+         top_10_list_paginator = Paginator(top_10_list, 10)# Show 10 book per page.
+         page_num = request.GET.get('button')
+         print(page_num)
+         page = top_10_list_paginator.get_page(page_num)
+         context = {
+            'count' : top_10_list_paginator.count,
+            'page' : page
+         }
+         return render(request, TEMPLATE_NAME, context)
 
 
 def top_20_sellers(request):
@@ -63,7 +73,7 @@ def top_20_sellers(request):
    query = request.GET.get('sort_filed')
    if query is not None:
       top_20_list = sort(request, top_20_list)
-      top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
+      top_20_list_paginator = Paginator(top_20_list, 10)# Show 25 contacts per page.
       page_num = request.GET.get('button')
       if page_num is None:
          page_num = 1
@@ -75,7 +85,7 @@ def top_20_sellers(request):
       }
       return render(request, TEMPLATE_NAME, context)
    else:
-      top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
+      top_20_list_paginator = Paginator(top_20_list, 10) # Show 10 book per page.
       page_num = request.GET.get('button')
       print(page_num)
       page = top_20_list_paginator.get_page(page_num)

@@ -20,34 +20,36 @@
   {% endfor %}
 </ul>
 {%block rating_detail%}
-<ul>
-  <h4>Rating</h4>
-  <a href="{% url 'rating5' %}"><span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-  </a><br>
+<div class="rating_stars">
+  <ul>
+    <h4>Rating</h4>
+    <a href="{% url 'rating5' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+    </a><br>
 
-  <a href="{% url 'rating4' %}"><span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-  </a><br>
+    <a href="{% url 'rating4' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+    </a><br>
 
-  <a href="{% url 'rating3' %}"><span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-  </a><br>
+    <a href="{% url 'rating3' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    </a><br>
 
-  <a href="{% url 'rating2' %}"><span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-  </a><br>
+    <a href="{% url 'rating2' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    </a><br>
 
-  <a href="{% url 'rating1'%}"><span class="fa fa-star checked"></span>
-  </a><br>
+    <a href="{% url 'rating1'%}"><span class="fa fa-star checked"></span>
+    </a><br>
 
-</ul>
+  </ul>
+</div>
 {% endblock %}
 <!--Displaying Sort By category-->
 <form action="">
@@ -156,7 +158,7 @@
   {% endfor %}
 </ul>
 <ul>
-  {% for top20 in page.object_list %}
+  {% for top20 in page.object_list|slice:"0:20" %}
   <li>
     Title: {{top20.title}} <br>
     Author: {{top20.authorName}}<br>
