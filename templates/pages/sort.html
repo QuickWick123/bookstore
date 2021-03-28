@@ -156,7 +156,7 @@
   {% endfor %}
 </ul>
 <ul>
-  {% for top20 in page.object_list|slice:"0:20" %}
+  {% for top20 in page.object_list %}
   <li>
     Title: {{top20.title}} <br>
     Author: {{top20.authorName}}<br>
@@ -204,21 +204,24 @@
 <!--Pagination code start-->
 </div>
 <div class="page-link">
-  <span class="step-links">
-    {% if page.has_previous %}
-    <a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}"> Previous</a>
-    <a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}">previous</a>
-    {% endif %}
+  <form action="{% url 'top_20_sellers' %}" method="GET" id="page_num">
+      <span class="step-links">
+      {% if page.has_previous %}
+      <!--<button type="submit"><a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}"></a>Previous</button>-->
+      <button type="submit" form="page_num" value="{{page.previous_page_number }}" name="button">Prev</button>
+      {% endif %}
 
-    <span class="current">
-      Page {{ page.number }} of {{ page.paginator.num_pages }}.
+      <span class="current">
+        Page {{ page.number }} of {{ page.paginator.num_pages }}.
+      </span>
+
+      {% if page.has_next %}
+      
+      <button type="submit" form="page_num" value="{{page.next_page_number}}" name="button">Next</button>
+      <button type="submit" form="page_num" value="{{page.paginator.num_pages}}" name="button">Last</button>
+      {% endif %}
     </span>
-
-    {% if page.has_next %}
-    <a href="{% url 'top_20_sellers' %}page={{page.next_page_number }}">Next</a>
-    <a href="{% url 'top_20_sellers' %}page={{page.paginator.num_pages }}">Last </a>
-    {% endif %}
-  </span>
+</form>
 </div>
 <!--Pagination code end-->
 {% endblock content %}

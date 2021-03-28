@@ -6,9 +6,10 @@ urlpatterns = [
 
     path(r'?P<catetgory>', views.browse_by_category, name='browse_by_category'),
     path(r'top10sellers', views.top_10_sellers, name='top_10_sellers'),
-    path(r'page=?P<page>', views.top_20_sellers, name='top_20_sellers'),
+   # path(r'page=?P<page>', views.top_20_sellers, name='top_20_sellers'),
+    #path('top20sellers/<int:page>', views.top_20_sellers, name='top_20_sellers'),
     path(r'top20sellers/', views.top_20_sellers, name='top_20_sellers'),
-    
+ 
     path('rating5/', views.rating5, name='rating5'),
     path('rating4/', views.rating4, name='rating4'),
     path('rating3/', views.rating3, name='rating3'),

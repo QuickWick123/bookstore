@@ -64,7 +64,9 @@ def top_20_sellers(request):
    if query is not None:
       top_20_list = sort(request, top_20_list)
       top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
-      page_num = request.get('page')
+      page_num = request.GET.get('button')
+      if page_num is None:
+         page_num = 1
       print(page_num)
       page = top_20_list_paginator.get_page(page_num)
       context = {
@@ -74,7 +76,7 @@ def top_20_sellers(request):
       return render(request, TEMPLATE_NAME, context)
    else:
       top_20_list_paginator = Paginator(top_20_list, 10) # Show 25 contacts per page.
-      page_num = request.GET.get('page')
+      page_num = request.GET.get('button')
       print(page_num)
       page = top_20_list_paginator.get_page(page_num)
       context = {
