@@ -1,4 +1,5 @@
 """bookstore URL Configuration
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -22,7 +23,8 @@ urlpatterns = [
     path('shoppingcart/', include('shoppingcart.urls')),
     path('userprofile/', include('userprofile.urls')),
     path('', include('wishlist.urls')),
-    path('sort/', include('sort.urls')),
+    path('search/', include('sort.urls')),
+    path('browse/', include('sort.urls')),
     path('admin/', admin.site.urls),
-    path('', include("bookstore_api.urls")) #what's the diff. between url what's here and: path(''
+    path('', include("bookstore_api.urls"))
     ]

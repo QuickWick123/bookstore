@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!--
+{% load static%}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
+-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block content %}
+
+<div class="sort-display">
+    
+    <h3>Search Results</h3>
+
+    <ul>
+      {% for book in object_list %}
+        <li>
+          {{book.title}} <br>
+          {{book.authors}}<br>
+          <img src= '{{ book.thumbnailUrl }}' ></img>
+        </li>
+      {% endfor %}
+    </ul>
+<!--   
+<ul>
+    {% for book in books.all %}
+      <li>
+        {{ book.rating }}
+      </li>
+    {% endfor %}
+</ul>
+--> 
+
+
+{% endblock content %}
+</html>
+

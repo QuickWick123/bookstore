@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 
 class Book(models.Model):
@@ -14,6 +13,8 @@ class Book(models.Model):
     authors = models.JSONField()
     categories = models.JSONField()
     price = models.FloatField(null=True)
+    rating = models.IntegerField()
+    catetgory = models.CharField(max_length=100)
 
 
 class UserProfiles(models.Model):
@@ -26,4 +27,3 @@ class UserProfiles(models.Model):
     cart = models.JSONField(null=True)
     saveLater = models.JSONField(null=True)
     wishlist = models.JSONField(null=True)
-

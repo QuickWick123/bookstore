@@ -1,81 +1,51 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
 import requests
-from .models import Wishlist
-
-wishlists = [
-    {
-        'name': 'Fiction List',
-        'user': 'Fabio',
-        'books': [ {'Book1'}, {'Book2'}, {'book3'} ],
-        'date_created': 'August 27, 2018'
-    },
-    {
-        'name': 'Non-Fiction List',
-        'user': 'Luis',
-        'books': [ {'Book1', 'Book2', 'Book3'} ],
-        'date_created': 'August 28, 2018'
-    },
-]
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from .forms import NameForm
 
 
 def wishlist(request):
-    activeUser = 1
-    response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
+    return render(request, 'pages/wishlist.html', {"wishlistItems": wishlistView()})
+
+
+def wishlistView():
+    response = requests.get('http://localhost:8000/userdetail/' + str(1) + "/")
     userInfo = response.json()
-    wishlistList = userInfo['wishlist']
+    wishlist = userInfo['wishlist']
 
-    userList = list()
-
-    booksInWishlist = list()
-    for item in wishlistList:
+    i = 0
+    # booksInWishlist = list()
+    for item in wishlist:
         response = requests.get('http://localhost:8000/detail/' + str(item["book"]) + "/")
         book = response.json()
-        booksInWishlist.append(book)
+        # booksInWishlist.append(book)
+        wishlist[i]["book"] = book
+        i += 1
+    # return booksInWishlist
+    return wishlist
 
 
+def deleteItem(request, book_id):
+    activeUser = 1
+    response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+    print("resp", response)
 
-    #content = {
-     #   'wishlist': Wishlist.objects.all()
-    #}
-    return render(request, 'pages/wishlist.html', {"wishlistListItems": wishlistList, "books": booksInWishlist})
-
-
-class WishlistListView(ListView):
-    model = Wishlist
-    template_name = 'pages/wishlist.html'
-    context_object_name = 'wishlist'
-    ordering = [ '-date_posted' ]
+    return wishlist(request)
 
 
-class WishlistDetailView(DetailView):
-    template_name = 'pages/wishlist_form.html'
-    model = Wishlist
+def get_name(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NameForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
 
-
-class WishlistCreateView(CreateView):
-    model = Wishlist
-    template_name = 'pages/wishlist_create.html'
-    fields = [ 'name' ]
-
-    def test_func(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    # activeUser = 1
-    # response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
-    # userInfo = response.json()
-    # wishlist = userInfo["wishlist"]  # gets all cart info as list of dicts
-    # print(wish)
-
-    # booksInWishlist = list()
-    # for item in wishlist:
-    #   response = requests.get('http://localhost:8000/detail/' + str(item[ "wish1" ][ 0 ][ 'book' ]) + "/")
-    #  book = response.json()
-    # booksInWishlist.append(book)
-
-    # for item in userInfo["wishlist"]:
-    # book_ids = [entry['book'] for booklist in item.values() for entry in booklist]
-    # print(book_ids)
-
-    # return render(request, ', {"wishlistItems": wishlist, "books": booksInWishlist})
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+        return render(request, 'pages/wishlist_create.html', {'form': form})

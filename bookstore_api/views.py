@@ -7,17 +7,6 @@ from .serializers import BookSerializer
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import mixins
-from rest_framework.authentication import SessionAuthentication, TokenAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
-from django.shortcuts import get_object_or_404
-
-
-class BookViewSet(viewsets.ViewSet, mixins.ListModelMixin,
-                  mixins.CreateModelMixin, mixins.UpdateModelMixin,
-                  mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
-    serializer_class = BookSerializer
-    queryset = Book.objects.all()
 
 
 class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
@@ -25,9 +14,8 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
                      mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
+
     lookup_field = 'id'
-    authentication_classes = [SessionAuthentication, BasicAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
 
@@ -43,8 +31,8 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
     def put(self, request, id=None):
         return self.update(request, id)
 
-    def delete(self, request, id):
-        return self.destroy(request, id)
+    # def delete(self):
+    # return self.delete(request, id)
 
 
 class BookAPIView(APIView):

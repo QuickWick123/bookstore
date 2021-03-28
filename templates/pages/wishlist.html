@@ -2,34 +2,19 @@
 
 {% block content %}
 
-         <h1><a class="article-title">Wishlist Page Feature</a></h1>
-<h2>
-<ul>
-    <h3><a class="article-title">Wishlist Name: Computer Science Books</a></h3>
-  {% for item in books %}
-    <li><h2>Book: {{ item.title }}&nbsp; <img src= '{{ item.thumbnailUrl }}' ></img> Price:{{ item.price }}</h2> </li>
+
+<h1><a class="title">Wishlist Page Feature</a></h1>
+    {% for item in wishlistItems %}
+            <h2>Wishlist: {{item.name}} </h2>
+            <h2>Book: {{ item.book.title }} &nbsp;</h2>
+               <h3>Price:{{ item.book.price }}</h3>
+        <img src= '{{ item.book.thumbnailUrl }}'>
+<a href="{% url 'deleteItem' item.book.id %}">
+        <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+      </a>
+
     {% endfor %}
-     </ul>
-</h2>
-    {% for wishlist in wishlists %}
- <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ wishlist.user  }}</a>
-              <small class="text-muted">{{ wishlist.date_posted|date:"F d, Y"  }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ wishlist.name  }}</a></h2>
-            <p class="article-content">{{ wishlist.books }}</p>
-          </div>
-        </article>
-{% endfor %}
 
 
 
-<!--body>
-    {% for item in books %}
-      <li>{{ item.title }}&nbsp;{{ item.price }}</li>
-    {% endfor %}
-    </ul>
-</body> -->
 {% endblock content %}

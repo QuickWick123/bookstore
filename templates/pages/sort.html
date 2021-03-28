@@ -1,6 +1,129 @@
 {% extends 'base.html' %}
+<!--
+{% load static%}
 
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
+-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% block content %}
-<h1>Hello I am the Sort page!</h1>
+<h2>Browse</h2>
+<ul class="sidebar-nav">
+  <h4>Top Seller</h4>
+  <li><a href="{% url 'BroweseResultsView' %}">CEN Top 10</a></li>
+  <li><a href="">CEN Top 20</a></li>
+</ul>
+<ul class="sidebar-nav">
+  <h4>Genre</h4>
+  {% for category in book|slice:"1:4" %}
+    <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
+  {% endfor %}
+</ul>
+        <!--<h2>Browse</h2>
+        <ul class="sidebar-nav">
+           
+          <h4>Top Seller</h4>
+          <li><a href="">CEN Top 10</a></li>
+          <li><a href="">CEN Top 20</a></li>
+        </ul>
+        <ul class="sidebar-nav">
+            <h4>Genre</h4>
+            <li><a href="{% url 'BroweseResultsView'%}">Framwork</a></li>
+            <li><a href="{% url 'BroweseResultsView'%}">Java</a></li>
+            <li><a href="{% url 'BroweseResultsView' %}">Web Development</a></li>
+        </ul>
+        <ul class="sidebar-nav">
+            <h4>Price</h4>
+            <li><a href="">$0 - $30</a></li>
+            <li><a href="">$30 - $50</a></li>
+            <li><a href="">$50 - $100</a></li>
+        </ul>
+        <ul class="sidebar-nav">
+            <h4>Rating</h4>
+            <li><a href="">fa fa-star checked</a></li>
+            <li><a href="">$30 - $50</a></li>
+            <li><a href="">$50 - $100</a></li>
+        <form action="">
+          <label for="sort">Sort By:</label>
+          <select name="sort_category" id="sort_category_id">
+            <option value="sort_title">Title</option>
+            <option value="sort_athor">Author</option>
+            <option value="sort_price">Price</option>
+            <option value="sort_rating">Rating</option>
+            <option value="sort_date">Date</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Submit">
+        </form> 
+      -->
+
+
+
+        <!--<a heref="{% url 'BroweseResultsView' %}">Mobile Developement
+            <ul>
+                {% for book in book_list %}
+                  <li>
+                    {{book.title}}
+                    {{ book.authors}}
+                    <img src= '{{ book.thumbnailUrl }}' ></img>
+                  </li>
+                {% endfor %}
+              </ul>
+        </a>-->
+        <ul>
+          {% for result in result_list %}
+            <li>
+              Title: {{result.title}} <br>
+              Author: {{result.authors}}<br>
+              Rating: {{result.rating}}<br>
+              Price: {{result.price}}<br>
+              <img src= '{{ result.thumbnailUrl }}' ></img>
+            </li>
+            <br>
+    {% endfor %}
+        </ul>   
+    <ul>
+      {% for book in object_list %}
+        <li>
+          Title: {{book.title}} <br>
+          Author: {{ book.authors}}<br>
+          Rating: {{book.rating}}<br>
+          Price: {{book.price}}<br>
+          <img src= '{{ book.thumbnailUrl }}' ></img>
+        </li>
+        <br>
+{% endfor %}
+    </ul>
+
+<!--   
+<ul>
+    {% for book in books.all %}
+      <li>
+        {{ book.rating }}
+      </li>
+    {% endfor %}
+</ul>
+--> 
+
+
+</div>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
 {% endblock content %}
+</html>
 
