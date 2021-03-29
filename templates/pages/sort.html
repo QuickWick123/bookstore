@@ -10,8 +10,7 @@
 <h2>Browse</h2>
 <ul class="sidebar-nav">
   <h4>Top Seller</h4>
-  <li><a href="{% url 'top_10_sellers' %}">CEN Top 10</a></li>
-  <li><a href="{% url 'top_20_sellers' %}">CEN Top 20</a></li>
+  <li><a href="{% url 'top_20_sellers' %}">CEN Top Sellers</a></li>
 </ul>
 <ul class="sidebar-nav">
   <h4>Genre</h4>
@@ -64,6 +63,16 @@
     <option value="rating_high_to_low">Rating: High to Low</option>
   </select>
   <input type="submit" value="Sort">
+</form>
+<!--Displaying Sort By category code end-->
+<!--Displaying Pagination By category-->
+<form action="">
+  <label for="pagination">Pagination:</label>
+  <select name="paginate_by">
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select>
+  <input type="submit" value="Paginate">
 </form>
 <!--Displaying Sort By category code end-->
 <ul>
@@ -145,20 +154,7 @@
   {% endfor %}
 </ul>
 <ul>
-  {% for top10 in top_10_list|slice:"0:10" %}
-  <li>
-    Title: {{top10.title}} <br>
-    Author: {{top10.authorName}}<br>
-    Rating: {{top10.rating}}<br>
-    Price: ${{top10.price}}<br>
-    Released Date: {{top10.publishDate}}<br>
-    <img src='{{ top10.thumbnailUrl }}'></img>
-  </li>
-  <br>
-  {% endfor %}
-</ul>
-<ul>
-  {% for top20 in page.object_list|slice:"0:20" %}
+  {% for top20 in page.object_list %}
   <li>
     Title: {{top20.title}} <br>
     Author: {{top20.authorName}}<br>
