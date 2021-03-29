@@ -202,8 +202,7 @@
   <form method="GET" id="page_num"></form>
       <span class="step-links">
       {% if page.has_previous %}
-      <!--<button type="submit"><a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}"></a>Previous</button>-->
-      <button type="submit" form="page_num" value="{{page.previous_page_number }}" name="button">Prev</button>
+        <a href="{% my_url page.previous_page_number 'page' request.GET.urlencode%} ">Prev</a>
       {% endif %}
 
       <span class="current">
@@ -211,10 +210,8 @@
       </span>
 
       {% if page.has_next %}
-      <a href="{% my_url page.next_page_number 'page' request.GET.urlencode%} ">Next</a>
-      <a href="{% my_url page.paginator.num_pages 'page' request.GET.urlencode%} ">Last</a>
-      <!--<button type="submit" form="page_num"value="{{ page.next_page_number}}" name="button">Next</button>
-      <button type="submit" form="page_num" value="{{page.paginator.num_pages}}" name="button">Last</button>-->
+        <a href="{% my_url page.next_page_number 'page' request.GET.urlencode%} ">Next</a>
+        <a href="{% my_url page.paginator.num_pages 'page' request.GET.urlencode%} ">Last</a>
       {% endif %}
     </span>
 </form>

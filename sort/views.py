@@ -63,7 +63,6 @@ def top_sellers(request):
       top_20_list_paginator = Paginator(top_20_list, pag_by) # Show 10 book per page.
       page_num = request.GET.get('page')
       page = top_20_list_paginator.get_page(page_num)
-      print(page)
       context = {
          'count' : top_20_list_paginator.count,
          'page' : page
