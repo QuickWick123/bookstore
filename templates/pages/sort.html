@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
 -->
+{% load myapp_tag %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% block content %}
 <h2>Browse</h2>
@@ -62,19 +63,15 @@
     <option value="rating_low_to_high">Rating: Low to High</option>
     <option value="rating_high_to_low">Rating: High to Low</option>
   </select>
-  <input type="submit" value="Sort">
-</form>
-<!--Displaying Sort By category code end-->
-<!--Displaying Pagination By category-->
-<form action="">
   <label for="pagination">Pagination:</label>
   <select name="paginate_by">
     <option value="10">10</option>
     <option value="20">20</option>
   </select>
-  <input type="submit" value="Paginate">
+  <input type="submit" value="Sort">
 </form>
 <!--Displaying Sort By category code end-->
+
 <ul>
   {% for sort in sort_list %}
   <li>
@@ -202,7 +199,7 @@
 <!--Pagination code start-->
 </div>
 <div class="page-link">
-  <form action="{% url 'top_20_sellers' %}" method="GET" id="page_num">
+  <form method="GET" id="page_num"></form>
       <span class="step-links">
       {% if page.has_previous %}
       <!--<button type="submit"><a href="{% url 'top_20_sellers' %}page={{page.previous_page_number }}"></a>Previous</button>-->
@@ -214,9 +211,10 @@
       </span>
 
       {% if page.has_next %}
-      
-      <button type="submit" form="page_num" value="{{page.next_page_number}}" name="button">Next</button>
-      <button type="submit" form="page_num" value="{{page.paginator.num_pages}}" name="button">Last</button>
+      <a href="{% my_url page.next_page_number 'page' request.GET.urlencode%} ">Next</a>
+      <a href="{% my_url page.paginator.num_pages 'page' request.GET.urlencode%} ">Last</a>
+      <!--<button type="submit" form="page_num"value="{{ page.next_page_number}}" name="button">Next</button>
+      <button type="submit" form="page_num" value="{{page.paginator.num_pages}}" name="button">Last</button>-->
       {% endif %}
     </span>
 </form>

@@ -72,8 +72,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'myapp_tag': 'bookstore.templatetag.myapp_tag',
+                }
+
         },
     },
+    
 ]
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'

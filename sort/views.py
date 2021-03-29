@@ -44,18 +44,16 @@ def top_sellers(request):
    top_20_list = Book.objects.all()
    query = request.GET.get('sort_filed')
    paginate = request.GET.get('paginate_by')
-   print(paginate)
    pag_by = 10
    if paginate is not None:
       if paginate != '10':
          pag_by = 20
-   print(pag_by)
    if query is not None:
       top_20_list = sort(request, top_20_list)
       top_20_list_paginator = Paginator(top_20_list, pag_by)# Show 25 contacts per page.
-      page_num = request.GET.get('button')
+      page_num = request.GET.get('page')
+      print(page_num)
       page = top_20_list_paginator.get_page(page_num)
-      print(page)
       context = {
          'count' : top_20_list_paginator.count,
          'page' : page
@@ -63,7 +61,7 @@ def top_sellers(request):
       return render(request, TEMPLATE_NAME, context)
    else:
       top_20_list_paginator = Paginator(top_20_list, pag_by) # Show 10 book per page.
-      page_num = request.GET.get('button')
+      page_num = request.GET.get('page')
       page = top_20_list_paginator.get_page(page_num)
       print(page)
       context = {
