@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
     isbn = models.IntegerField()
@@ -14,7 +15,8 @@ class Book(models.Model):
     price = models.FloatField(null=True)
     rating = models.IntegerField()
     catetgory = models.CharField(max_length=100)
-
+    authorName = models.CharField(max_length=100)
+    publishDate = models.DateField()
 
 class UserProfiles(models.Model):
     userName = models.CharField(max_length=100)
@@ -26,4 +28,4 @@ class UserProfiles(models.Model):
     cart = models.JSONField(null=True)
     saveLater = models.JSONField(null=True)
 
-
+    

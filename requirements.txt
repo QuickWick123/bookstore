@@ -2,11 +2,15 @@ asgiref==3.3.1
 certifi==2020.12.5
 chardet==4.0.0
 Django==3.1.5
+django-braces==1.14.0
 django-cors-headers==3.7.0
+django-model-utils==4.1.1
 djangorestframework==3.12.2
 idna==2.10
 psycopg2-binary==2.8.6
 pytz==2020.5
 requests==2.25.1
+six==1.15.0
 sqlparse==0.4.1
+swapper==1.1.2.post1
 urllib3==1.26.3

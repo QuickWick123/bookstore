@@ -5,125 +5,218 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% load myapp_tag %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% block content %}
 <h2>Browse</h2>
 <ul class="sidebar-nav">
   <h4>Top Seller</h4>
-  <li><a href="{% url 'BroweseResultsView' %}">CEN Top 10</a></li>
-  <li><a href="">CEN Top 20</a></li>
+  <li><a href="{% url 'top_20_sellers' %}">CEN Top Sellers</a></li>
 </ul>
 <ul class="sidebar-nav">
   <h4>Genre</h4>
-  {% for category in book|slice:"1:4" %}
-    <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
+  {% for category in book|slice:"0:4" %}
+  <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
   {% endfor %}
 </ul>
-        <!--<h2>Browse</h2>
-        <ul class="sidebar-nav">
-           
-          <h4>Top Seller</h4>
-          <li><a href="">CEN Top 10</a></li>
-          <li><a href="">CEN Top 20</a></li>
-        </ul>
-        <ul class="sidebar-nav">
-            <h4>Genre</h4>
-            <li><a href="{% url 'BroweseResultsView'%}">Framwork</a></li>
-            <li><a href="{% url 'BroweseResultsView'%}">Java</a></li>
-            <li><a href="{% url 'BroweseResultsView' %}">Web Development</a></li>
-        </ul>
-        <ul class="sidebar-nav">
-            <h4>Price</h4>
-            <li><a href="">$0 - $30</a></li>
-            <li><a href="">$30 - $50</a></li>
-            <li><a href="">$50 - $100</a></li>
-        </ul>
-        <ul class="sidebar-nav">
-            <h4>Rating</h4>
-            <li><a href="">fa fa-star checked</a></li>
-            <li><a href="">$30 - $50</a></li>
-            <li><a href="">$50 - $100</a></li>
-        <form action="">
-          <label for="sort">Sort By:</label>
-          <select name="sort_category" id="sort_category_id">
-            <option value="sort_title">Title</option>
-            <option value="sort_athor">Author</option>
-            <option value="sort_price">Price</option>
-            <option value="sort_rating">Rating</option>
-            <option value="sort_date">Date</option>
-          </select>
-          <br><br>
-          <input type="submit" value="Submit">
-        </form> 
-      -->
+{%block rating_detail%}
+<div class="rating_stars">
+  <ul>
+    <h4>Rating</h4>
+    <a href="{% url 'rating5' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+    </a><br>
 
+    <a href="{% url 'rating4' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+    </a><br>
 
+    <a href="{% url 'rating3' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    </a><br>
 
-        <!--<a heref="{% url 'BroweseResultsView' %}">Mobile Developement
-            <ul>
-                {% for book in book_list %}
-                  <li>
-                    {{book.title}}
-                    {{ book.authors}}
-                    <img src= '{{ book.thumbnailUrl }}' ></img>
-                  </li>
-                {% endfor %}
-              </ul>
-        </a>-->
-        <ul>
-          {% for result in result_list %}
-            <li>
-              Title: {{result.title}} <br>
-              Author: {{result.authors}}<br>
-              Rating: {{result.rating}}<br>
-              Price: {{result.price}}<br>
-              <img src= '{{ result.thumbnailUrl }}' ></img>
-            </li>
-            <br>
-    {% endfor %}
-        </ul>   
-    <ul>
-      {% for book in object_list %}
-        <li>
-          Title: {{book.title}} <br>
-          Author: {{ book.authors}}<br>
-          Rating: {{book.rating}}<br>
-          Price: {{book.price}}<br>
-          <img src= '{{ book.thumbnailUrl }}' ></img>
-        </li>
-        <br>
-{% endfor %}
-    </ul>
+    <a href="{% url 'rating2' %}"><span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    </a><br>
 
-<!--   
-<ul>
-    {% for book in books.all %}
-      <li>
-        {{ book.rating }}
-      </li>
-    {% endfor %}
-</ul>
---> 
+    <a href="{% url 'rating1'%}"><span class="fa fa-star checked"></span>
+    </a><br>
 
-
+  </ul>
 </div>
-<div class="pagination">
-  <span class="step-links">
-      {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+{% endblock %}
+<!--Displaying Sort By category-->
+<form action="">
+  <label for="sort_list">Sort By:</label>
+  <select name="sort_filed">
+    <option value="title_a-z">Title: A-Z</option>
+    <option value="author">Author Name: A-Z</option>
+    <option value="release_date">Released Date</option>
+    <option value="price_low_to_high">Price: Low to High</option>
+    <option value="price_high_to_low">Price: High to Low</option>
+    <option value="rating_low_to_high">Rating: Low to High</option>
+    <option value="rating_high_to_low">Rating: High to Low</option>
+  </select>
+  <label for="pagination">Pagination:</label>
+  <select name="paginate_by">
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select>
+  <input type="submit" value="Sort">
+</form>
+<!--Displaying Sort By category code end-->
+
+<ul>
+  {% for sort in sort_list %}
+  <li>
+    Title: {{sort.title}} <br>
+    Author: {{sort.authorName}}<br>
+    Rating: {{sort.rating}}<br>
+    Price: ${{sort.price}}<br>
+    Released Date: {{sort.publishDate}}<br>
+    <img src='{{ sort.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating5 in rating5_book_list %}
+  <li>
+    Title: {{rating5.title}} <br>
+    Author: {{rating5.authorName}}<br>
+    Rating: {{rating5.rating}}<br>
+    Price: {{rating5.price}}<br>
+    Released Date: {{rating5.publishDate}}<br>
+    <img src='{{ rating5.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating4 in rating4_book_list %}
+  <li>
+    Title: {{rating4.title}} <br>
+    Author: {{rating4.authorName}}<br>
+    Rating: {{rating4.rating}}<br>
+    Price: ${{rating4.price}}<br>
+    Released Date: {{rating4.publishDate}}<br>
+    <img src='{{ rating4.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating3 in rating3_book_list %}
+  <li>
+    Title: {{rating3.title}} <br>
+    Author: {{rating3.authorName}}<br>
+    Rating: {{rating3.rating}}<br>
+    Price: ${{rating3.price}}<br>
+    Released Date: {{rating3.publishDate}}<br>
+    <img src='{{ rating3.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating2 in rating2_book_list %}
+  <li>
+    Title: {{rating2.title}} <br>
+    Author: {{rating2.authorName}}<br>
+    Rating: {{rating2.rating}}<br>
+    Price: ${{rating2.price}}<br>
+    Released Date: {{rating2.publishDate}}<br>
+    <img src='{{ rating2.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for rating1 in rating1_book_list %}
+  <li>
+    Title: {{rating1.title}} <br>
+    Author: {{rating1.authorName}}<br>
+    Rating: {{rating1.rating}}<br>
+    Price: ${{rating1.price}}<br>
+    Released Date: {{rating1.publishDate}}<br>
+    <img src='{{ rating1.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<ul>
+  {% for top20 in page.object_list %}
+  <li>
+    Title: {{top20.title}} <br>
+    Author: {{top20.authorName}}<br>
+    Rating: {{top20.rating}}<br>
+    Price: {{top20.price}}<br>
+    Released Date: {{top20.publishDate}}<br>
+    <img src='{{ top20.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+
+
+<!--Displaying result from each category-->
+<ul>
+  {% for result in result_list %}
+  <li>
+    Title: {{result.title}} <br>
+    Author: {{result.authorName}}<br>
+    Rating: {{result.rating}}<br>
+    Price: ${{result.price}}<br>
+    Released Date: {{result.publishDate}}<br>
+    <img src='{{ result.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<!--Displaying result from each category code end here-->
+<!--Displaying books code start-->
+<ul>
+  {% for book in object_list %}
+  <li>
+    Title: {{book.title}} <br>
+    Author: {{ book.authorName}}<br>
+    Rating: {{book.rating}}<br>
+    Price: ${{book.price}}<br>
+    Released Date: {{book.publishDate}}<br>
+    <img src='{{ book.thumbnailUrl }}'></img>
+  </li>
+  <br>
+  {% endfor %}
+</ul>
+<!--Displaying books code end-->
+
+<!--Pagination code start-->
+</div>
+<div class="page-link">
+  <form method="GET" id="page_num"></form>
+      <span class="step-links">
+      {% if page.has_previous %}
+        <a href="{% my_url page.previous_page_number 'page' request.GET.urlencode%} ">Prev</a>
       {% endif %}
 
       <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        Page {{ page.number }} of {{ page.paginator.num_pages }}.
       </span>
 
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% if page.has_next %}
+        <a href="{% my_url page.next_page_number 'page' request.GET.urlencode%} ">Next</a>
+        <a href="{% my_url page.paginator.num_pages 'page' request.GET.urlencode%} ">Last</a>
       {% endif %}
-  </span>
+    </span>
+</form>
 </div>
+<!--Pagination code end-->
 {% endblock content %}
-</html>
 
+</html>

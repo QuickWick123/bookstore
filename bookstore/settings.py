@@ -72,8 +72,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'myapp_tag': 'bookstore.templatetag.myapp_tag',
+                }
+
         },
     },
+    
 ]
 
 WSGI_APPLICATION = 'bookstore.wsgi.application'
@@ -90,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bookstoredb',
         'USER': 'postgres',
-        'PASSWORD': 'cenproject',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432'
     }

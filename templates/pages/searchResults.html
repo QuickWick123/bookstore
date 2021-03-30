@@ -15,8 +15,10 @@
     <ul>
       {% for book in object_list %}
         <li>
-          {{book.title}} <br>
-          {{book.authors}}<br>
+          Title: {{book.title}} <br>
+          Author: {{book.authorName}}<br>
+          PublishDate: {{book.publishDate}}<br>
+          Price: {{book.price}}<br>
           <img src= '{{ book.thumbnailUrl }}' ></img>
         </li>
       {% endfor %}
