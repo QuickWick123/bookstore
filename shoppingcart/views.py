@@ -50,7 +50,7 @@ def LaterData():
 
     i=0
     for item in laterList:
-        response = requests.get('http://localhost:8000/detail/' + str(item['book']) + "/")
+        response = requests.get('http://localhost:8000/detail/' + str(item["book"]) + "/")
         book = response.json()
         laterList[i]["book"] = book
         i += 1
