@@ -82,16 +82,23 @@ class userCart(APIView):
         except UserProfiles.DoesNotExist:
             return HttpResponse(status= status.HTTP_204_NO_CONTENT)
 
-
     def post(self, request, id):
         
         user = self.get_object(id)
-        newItem = request.data
+        bookData = request.data
+        bookId = bookData["book"]
+        defaultValue = 1
         cart = user.cart
+        newItem = {}
+        newItem.update({"book": bookId})
+        if "quantity" not in newItem:
+            newItem['quantity'] = 1
+       
         cart.append(newItem)
         user.cart = cart
         user.save()
         return Response(user.cart, status = status.HTTP_200_OK)
+
 
     def delete(self, request, id):
 
@@ -113,9 +120,9 @@ class userCart(APIView):
         user = self.get_object(id)
         cart = user.cart
         updateDic = request.data
-        print(updateDic)
-        print(cart)
-        print(updateDic["quantity"])
+        # print(updateDic)
+        # print(cart)
+        # print(updateDic["quantity"])
 
         for i, dic in enumerate(cart):
             print(type(dic["book"]), "=", type(updateDic["book"]))

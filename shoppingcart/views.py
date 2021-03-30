@@ -7,6 +7,12 @@ def shoppingcart(request): #Main function. Displays all on page
 
     return render(request, 'pages/shoppingcart.html', {"cartItems": buildData(), "cartTotal": cartTotal(), "laterItems": LaterData()})
 
+def postCart(request, book_id):
+    activeUser = 1 #two users 1/2
+    response = requests.post('http://localhost:8000/usercart/'+str(activeUser)+"/", data = {"book": book_id})
+
+    return shoppingcart(request)
+
 def deleteItem(request, book_id): #delete cart item
     activeUser = 1 #two users 1/2
     response = requests.delete('http://localhost:8000/usercart/'+str(activeUser)+"/", data = {"book": book_id})
@@ -63,9 +69,10 @@ def saveLaterItem(request, book_id):
 
     return shoppingcart(request)
 
-#WORK IN PROGRESS
+#WORK IN PROGRESS EDITED 3/29
 def laterToCart(request, book_id):
     activeUser = 1
+    print(book_id)
     response = requests.post('http://localhost:8000/usercart/'+str(activeUser)+"/", data = {"book": book_id})
     response = requests.delete('http://localhost:8000/latercart/'+str(activeUser)+"/", data = {"book": book_id})
 
@@ -76,9 +83,12 @@ def cartTotal():
     response = requests.get('http://localhost:8000/userdetail/'+str(activeUser)+"/")
     userInfo = response.json()
     cart = userInfo["cart"] 
-
     i = 0
     total = 0
+
+    if len(cart) == 0:
+        cartTotalFormatted = 0
+
     for item in cart:
         response = requests.get('http://localhost:8000/detail/' + str(item['book']) + "/")
         book = response.json()
