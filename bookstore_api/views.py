@@ -8,15 +8,16 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import mixins
 
+
 class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
                      mixins.CreateModelMixin, mixins.UpdateModelMixin,
                      mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
 
-    lookup_field ='id'
+    lookup_field = 'id'
 
-    def get(self, request, id =None):
+    def get(self, request, id=None):
 
         if id:
             return self.retrieve(request)
@@ -30,8 +31,8 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
     def put(self, request, id=None):
         return self.update(request, id)
 
-    #def delete(self):
-        #return self.delete(request, id)
+    # def delete(self):
+    # return self.delete(request, id)
 
 
 class BookAPIView(APIView):
@@ -56,7 +57,7 @@ class BookDetails(APIView):
         try:
             return Book.objects.get(id=id)
 
-        except Book.DoesNotExist: #doesnt catch if book id is missing
+        except Book.DoesNotExist:  # doesnt catch if book id is missing
             return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, id):
@@ -76,4 +77,3 @@ class BookDetails(APIView):
         book = self.get_object(id)
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
