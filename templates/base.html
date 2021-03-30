@@ -38,15 +38,19 @@
           </li>
           <li>
             <a href="{% url 'wishlist' %}" class="desktop-link">Wishlist</a>
-            <input type="checkbox" id="shopping-cart">
+            <input type="checkbox" id="wishlist">
             <label for="wishlist">Wishlist</label>
+          </li>
+          <li>
+            <a href="{% url 'BroweseResultsView' %}" class="desktop-link">Browse</a>
+            <input type="checkbox" id="browse">
+            <label for="browse">Browse</label>
           </li>
         </ul>
       </div>
       <div class="search-container">
       <form action="{% url 'SearchResultsView' %}" method="get">
         <input type="text" placeholder="Search Books..." name="q">
-        <button type="submit"><a href="{% url 'BroweseResultsView' %}" class="desktop-link">Sort</a></button>
       </form>
       
     </div>
@@ -55,6 +59,7 @@
 </head>
 
 <body>
+
 
 </body>
 {% if messages %}
