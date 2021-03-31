@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+ 
+
+<script src="{% static 'js/gridview.js' %}"></script>
+<body style="background-color:rgb(121, 197, 255);"></body>
+<!-- <body style=style="background:url(https://imgs.6sqft.com/wp-content/uploads/2020/03/19142213/bookstore-shelves.jpg) rgba(0,0,0,0.9);"></body> -->
+
+<!-- <h2>
+<ul>
+    {% for item in books %}
+      <li>{{ book.title }}</li>
+      <img src= '{{ book.thumbnailUrl }}' ></img>
+    {% endfor %}  
+    </ul>
+</h2>
+
+<h1 class="test">Title: Green Eggs and Ham</h1>
+<h1 class="test">Author: Dr. Seuss</h1>
+<h2 class="test">ISBN: 0007672535</h2>
+<h2 class="test">Release Date: 1960-08-12</h2>
+<h2 class="test">Publisher: Beginner Books/Random House</h2>
+<h2 class="test">Description: Green Eggs and Ham is a childrens book by Dr. Seuss, first published on August 12, 1960. As of 2019, the book has sold 8 million copies worldwide.</h2>
+<img src="{% static 'images/book1.jpg' %}" alt="My image">
+<h1 class="test">Price: $14.99</h1>
+<h1>Title: {{ book.title }}</h1> -->
+
+
+  
+
+
+
+
+
+
+
+ 
+
+
+
+<div class="container">
+      
+  <div class="row">
+    {% for book1 in book %}
+    <body>
+      <section>
+      <ul>
+      
+    <div class="col-md-4">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <a href="/detail/{{book1.id}}" target="_blank"><img src="{{ book1.thumbnailUrl }}" /></a>
+      </div><!-- Post Content-->
+      <div class="post-content">
+          <div class="category"><a href="https://bing.com">Add to cart</a></div>
+          <h1 class="title">{{ book1.title }}</h1>
+          <h2 class="sub_title">${{ book1.price }}</h2>
+          <p class="description enforcer">{{ book1.shortDescription }}</p>
+          <div class="post-meta"><span class="comments"><i class="fa fa-star" style="color: gold"></i><a href="#"> Rating: {{ book1.rating }}</a></span></div>
+      </div>
+  </div>
+    </div>  
+    </div>
+  </div>
+  {% endfor %}  
+  </div>  
+
+</ul>
+</body>
+
+
+
+
+
+
+
+
+<div class="container">
+      
+  <div class="row">
+    <div class="col-md-4">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <a href="https://google.com" target="_blank"><img src="{{ book.thumbnailUrl }}" /></a>
+      </div><!-- Post Content-->
+      <div class="post-content">
+          <div class="category"><a href="https://bing.com">Add to cart</a></div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description enforcer">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="comments"><i class="fa fa-star" style="color: gold"></i><a href="#"> Rating: {{ book.rating }}</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-4">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+          <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.longDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-4">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+        <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+        <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+        <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+        <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+      <!-- Thumbnail-->
+      <div class="thumbnail">
+                      <img src="{{ book.thumbnailUrl }}" />
+      </div><!-- Post Content-->
+      <div class="post-content">
+        <div class="category">Add to cart</div>
+          <h1 class="title">{{ book.title }}</h1>
+          <h2 class="sub_title">${{ book.price }}</h2>
+          <p class="description">{{ book.shortDescription }}</p>
+          <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+      </div>
+  </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+        <!-- Thumbnail-->
+        <div class="thumbnail">
+                        <img src="{{ book.thumbnailUrl }}" />
+        </div><!-- Post Content-->
+        <div class="post-content">
+          <div class="category">Add to cart</div>
+            <h1 class="title">{{ book.title }}</h1>
+            <h2 class="sub_title">${{ book.price }}</h2>
+            <p class="description">{{ book.shortDescription }}</p>
+            <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+        </div>
+    </div>
+    <div class="col-md-5">
+      <div class="post-module">
+        <!-- Thumbnail-->
+        <div class="thumbnail">
+                        <img src="{{ book.thumbnailUrl }}" />
+        </div><!-- Post Content-->
+        <div class="post-content">
+          <div class="category">Add to cart</div>
+            <h1 class="title">{{ book.title }}</h1>
+            <h2 class="sub_title">${{ book.price }}</h2>
+            <p class="description">{{ book.shortDescription }}</p>
+            <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i>Bookstore stuff</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 25 comments</a></span></div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
+  
+<ul class="slides">
+  <input type="radio" name="radio-btn" id="img-1" checked />
+  <li class="slide-container">
+  <div class="slide">
+    <img src="https://i.imgur.com/LGpRDLr.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-6" class="prev">&#x2039;</label>
+    <label for="img-2" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <input type="radio" name="radio-btn" id="img-2" />
+  <li class="slide-container">
+      <div class="slide">
+        <img src="https://i.imgur.com/VbWHWLS.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-1" class="prev">&#x2039;</label>
+    <label for="img-3" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <input type="radio" name="radio-btn" id="img-3" />
+  <li class="slide-container">
+      <div class="slide">
+        <img src="https://i.imgur.com/H2Pbky0.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-2" class="prev">&#x2039;</label>
+    <label for="img-4" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <input type="radio" name="radio-btn" id="img-4" />
+  <li class="slide-container">
+      <div class="slide">
+        <img src="https://i.imgur.com/uDb9zmP.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-3" class="prev">&#x2039;</label>
+    <label for="img-5" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <input type="radio" name="radio-btn" id="img-5" />
+  <li class="slide-container">
+      <div class="slide">
+        <img src="https://i.imgur.com/EIfr0eB.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-4" class="prev">&#x2039;</label>
+    <label for="img-6" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <input type="radio" name="radio-btn" id="img-6" />
+  <li class="slide-container">
+      <div class="slide">
+        <img src="https://i.imgur.com/idO34B8.jpg" />
+      </div>
+  <div class="nav">
+    <label for="img-5" class="prev">&#x2039;</label>
+    <label for="img-1" class="next">&#x203a;</label>
+  </div>
+  </li>
+
+  <li class="nav-dots">
+    <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+    <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+    <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+    <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+    <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+    <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+  </li>
+</ul>
+</div> -->
+
+
+<!-- <body>
+  <ul>
+ {% for book1 in book %}
+ <div>
+   <article class="left_article">
+     <h1>{{ book1.title }}</h1>
+      </article>     
+ </div>
+ {% endfor %}    
+
+</ul> -->
+
+</body> 
+</div>
+</div>
+
+{% endblock %}

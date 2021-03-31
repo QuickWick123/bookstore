@@ -27,5 +27,5 @@ class UserProfiles(models.Model):
     homeAddress = models.CharField(max_length=100)
     cart = models.JSONField(null=True)
     saveLater = models.JSONField(null=True)
-
-    
+    wishlist = models.JSONField(null=True)
+    wishlistName = models.CharField(max_length=100, default="null")
