@@ -19,7 +19,7 @@ class Book(models.Model):
     publishDate = models.DateField()
     publisher = models.CharField(max_length=100)
     authorbio = models.CharField(max_length=1000)
-    fullurl = models.CharField(max_length=1000)
+    fullurl = models.CharField(max_length=200)
 
 
 class UserProfiles(models.Model):
