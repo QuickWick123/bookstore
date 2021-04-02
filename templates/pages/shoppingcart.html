@@ -5,53 +5,35 @@
 {% load static%}
 <head>
   <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+  <script src="{% static 'js/gridviewcart.js' %}"></script>
+  <style>
+    h1 {text-align: center;}
+    li {text-align: center;}
+    ul {text-align: center;}
+    * {
+    box-sizing: border-box;
+    }
+    img {
+      max-width: 100%;
+      height: 10vw;
+        }
+  </style>
 </head>
 
 
-<!-- <head>
-<div id="mainWrapper">
+<body style="background-color:rgb(201, 214, 224);">
+  <div class ="container" id="mainWrapper">
+    <h1>MY SHOPPING CART</h1>
+      <div class="row">
+        {% for item in cartItems %}
+        <div class="col-md-2">
+          <div class="card">
 
-<link rel="stylesheet" href="{% static 'css/cart.css' %}">
-<header>
-  <nav class="secondary_header" id="menu">
-    <ul>
-      <li><h1>MY SHOPPING CART</h1></li>
-      
-    </ul>
-  </nav>
-  </header>
-</head> -->
-
-<body style="background-color:rgb(121, 197, 255);">
-  <div id="mainWrapper">
-    
-    <div id="content">
-
-      <section class="sidebar"> 
-        <!-- This adds a sidebar with 1 searchbox,2 menusets, each with 4 links -->
-        <div id="menubar">
-          <nav class="menu">
-            <h1><!-- Title for menuset 1 -->ORDER SUMMARY </h1>
-            <hr>
-            <ul>
-              <!-- List of links under menuset 1 -->
-              <li><p title="totalItems">    Subtotal:</p> </li>
-              <li><p title="subtotal">   $ {{ cartTotal }}</p></li>
-            </ul>
-          </nav>
-        </div>
-      </section>
-
-      <section class="mainContent">
-        <h1>MY SHOPPING CART</h1>
-        <!-- <div class="productRow">Each product row contains info of 3 elements -->
-          {% for item in cartItems %}
-          <article style="float: left;" class="productInfo"><!-- Each individual product description -->
-            <p class="productContent">{{ item.book.title }} </p>
-            <div><img src='{{ item.book.thumbnailUrl }}'></div>
-            <p class="price">${{ item.book.price }}</p>
+            <img src='{{ item.book.thumbnailUrl }}'><br>
+            {{ item.book.title }}<br>
+            ${{ item.book.price }}<br>
             <form action="{% url 'updateQuantity' item.book.id %}" method = "get">
-              <label for="quantity">Quantity (MAX 5):</label>
+              <label for="quantity">Quantity (MAX 5):</label><br>
               <input type="number" id="quan" name="q" min="1" max="5" placeholder='{{ item.quantity }}'>
               <input type="submit" value="Submit">
             </form>
@@ -61,36 +43,45 @@
             <p><a href="{% url 'deleteItem' item.book.id %}">
               <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
             </a></p>
-            <br style="clear:both" />
-          </article>
-          {% endfor %}
-        <!-- </div> -->
+          
+          </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+
+          <div class="summary">
+            <h1>ORDER SUMMARY </h1>
+            <hr>
+            <ul>
+              <h3>
+              <p>    Subtotal:</p> </li>
+              <p>   $ {{ cartTotal }}</p></li>
+              </h3>
+            </ul>
+          </div>
+    <br>
+    <br>
+    <h1>SAVE FOR LATER ITEMS:</h1>
+    <div class="row">
+      {% for item in laterItems %}
+      <div class="col-md-3">
+        <div class="card">
+
+          <img src='{{ item.book.thumbnailUrl }}'><br>
+          {{ item.book.title }}<br>
+          <p><a href="{% url 'moveToCart' item.book.id %}">
+            <button class="button buttonAdd" type="submit" name="moveToCart">Move To Cart</button>
+          </a></p>
+          <p><a href="{% url 'deleteLater' item.book.id %}">
+            <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+          </a></p>
         
-      </section>
-
-      <!-- <header class="saveLater">
-        SAVE FOR LATER SECTION
-      </header> --> 
-
-      <section class="mainContent">
-        <h1>SAVE FOR LATER ITEMS: {{ later }}</h1>
-        <!-- <div class="productRow">Each product row contains info of 3 elements -->
-          {% for item in laterItems %}
-          <article style="float: left;" class="productInfo"><!-- Each individual product description -->
-            <p class="productContent">{{ item.book.title }} </p>
-            <div><img src='{{ item.book.thumbnailUrl }}'></div>
-            <p class="price">${{ item.book.price }}</p>
-              <p><a href="{% url 'moveToCart' item.book.id %}">
-                <button class="button buttonAdd" type="submit" name="moveToCart">Move To Cart</button>
-              </a></p>
-              <p><a href="{% url 'deleteLater' item.book.id %}">
-                <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
-              </a></p>
-            <br style="clear:both" />
-          </article>
-          {% endfor %}
-      </section>
-    </div>      
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
   </div>  
 </body>
 
