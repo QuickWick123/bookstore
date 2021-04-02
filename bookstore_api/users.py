@@ -226,11 +226,11 @@ class userWish2(APIView):
     def post(self, request, id):
         user = self.get_object(id)
         newItem = request.data
-        wishlist = user.wishlist
-        wishlist.append(newItem)
-        user.wishlist = wishlist
+        wishlist2 = user.wishlist2
+        wishlist2.append(newItem)
+        user.wishlist2 = wishlist2
         user.save()
-        return Response(user.wishlist, status=status.HTTP_200_OK)
+        return Response(user.wishlist2, status=status.HTTP_200_OK)
 
     def delete(self, request, id):
 
@@ -263,11 +263,11 @@ class userWish3(APIView):
     def post(self, request, id):
         user = self.get_object(id)
         newItem = request.data
-        wishlist = user.wishlist
-        wishlist.append(newItem)
-        user.wishlist = wishlist
+        wishlist3 = user.wishlist3
+        wishlist3.append(newItem)
+        user.wishlist3 = wishlist3
         user.save()
-        return Response(user.wishlist, status=status.HTTP_200_OK)
+        return Response(user.wishlist3, status=status.HTTP_200_OK)
 
     def delete(self, request, id):
 

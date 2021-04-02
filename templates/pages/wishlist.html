@@ -7,36 +7,46 @@
 <h1><a class="title">Wishlist Page Feature</a></h1>
 
 <style>
+   body {
+    background-color: #a2f0fd;
+   }
   .bordered {
     width: 300px;
-    height: 350px;
+    height: 390px;
     padding: 20px;
     border: 10px solid yellowgreen;
   }
 </style>
     <h3>Active User:</h3>{{users.userName}}
 
-        <h3>Wishlist name:</h3>{{users.wishlistName}}
+        <h3>Primary Wishlist name:</h3>{{users.wishlistName}}
         <h3>Books:</h3>
     {% for item in wishlistItems%}
         <div class="bordered">
-            <h4>Book: {{ item.book.title }} &nbsp;</h4>
+            <h4>Title: {{ item.book.title }} &nbsp;</h4>
             <h5>Price: {{ item.book.price }}</h5>
             <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
-                <a href="{% url 'deleteItem2' item.book.id %}">
-                    <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
+                <a href="{% url 'delete' item.book.id %}">
+                    <button class="button buttonDelete" type="submit" name="delete">Remove Item</button>
                             </a>
 
-            <a href="{% url 'addCart' item.book.id %}">
+             <a href="{% url 'addCart' item.book.id %}">
                     <button class="button buttonAdd" type="submit" name="addCart">Move to Cart</button>
                             </a>
+
+                            <a href="{% url 'moveItem1to2' item.book.id %}">
+                              <button class="button buttonDelete" type="submit" name="moveItem1to2">Move to Second Wishlist</button>
+                                      </a>
+                                      <a href="{% url 'moveItem1to3' item.book.id %}">
+                                        <button class="button buttonDelete" type="submit" name="moveItem1to3">Move to Third Wishlist</button>
+                                                </a>
  </div>
     {% endfor %}
-    <h3>Wishlist name:</h3>{{users.wishlist2Name}}
+    <h3>Second Wishlist name:</h3><p>{{users.wishlist2Name}}</p>
     <h3>Books:</h3>
     {% for item in wishlistItems2 %}
         <div class="bordered">
-            <h4>Book: {{ item.book.title }} &nbsp;</h4>
+            <h4>Title: {{ item.book.title }} &nbsp;</h4>
             <h5>Price: {{ item.book.price }}</h5>
             <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
                 <a href="{% url 'deleteItem2' item.book.id %}">
@@ -46,13 +56,19 @@
             <a href="{% url 'addCart2' item.book.id %}">
                     <button class="button buttonAdd" type="submit" name="addCart2">Move to Cart</button>
                             </a>
+                            <a href="{% url 'moveItem2to1' item.book.id %}">
+                              <button class="button buttonDelete" type="submit" name="moveItem2to1">Move to Primary Wishlist</button>
+                                      </a>
+                                      <a href="{% url 'moveItem2to3' item.book.id %}">
+                                        <button class="button buttonDelete" type="submit" name="moveItem2to3">Move to Third Wishlist</button>
+                                                </a>
  </div>
     {% endfor %}
-    <h3>Wishlist name:</h3>{{users.wishlist3Name}}
+    <h3>Third Wishlist name:</h3><p>{{users.wishlist3Name}}</p>
     <h3>Books:</h3>
     {% for item in wishlistItems3 %}
         <div class="bordered">
-            <h4>Book: {{ item.book.title }} &nbsp;</h4>
+            <h4>Title: {{ item.book.title }} &nbsp;</h4>
             <h5>Price: {{ item.book.price }}</h5>
             <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
                 <a href="{% url 'deleteItem3' item.book.id %}">
@@ -62,6 +78,12 @@
             <a href="{% url 'addCart3' item.book.id %}">
                     <button class="button buttonAdd" type="submit" name="addCart3">Move to Cart</button>
                             </a>
+                            <a href="{% url 'moveItem3to1' item.book.id %}">
+                              <button class="button buttonDelete" type="submit" name="moveItem3to1">Move to Primary Wishlist</button>
+                                      </a>
+                                      <a href="{% url 'moveItem3to2' item.book.id %}">
+                                        <button class="button buttonDelete" type="submit" name="moveItem3to2">Move to Second Wishlist</button>
+                                                </a>
  </div>
     {% endfor %}
 

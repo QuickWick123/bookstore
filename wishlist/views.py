@@ -61,7 +61,7 @@ def wishlistView3():
     # return booksInWishlist
     return wishlist3
 
-def deleteItem(request, book_id):
+def delete(request, book_id):
     response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
     print("resp", response)
 
@@ -98,6 +98,50 @@ def addCart3(request, book_id):
     response = requests.post('http://localhost:8000/usercart/' + str(activeUser) + "/", data={"book": book_id})
 
     return wishlist(request)
+
+def moveItem1to2(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def moveItem1to3(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def moveItem2to1(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def moveItem2to3(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def moveItem3to1(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def moveItem3to2(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+
 
 def add(request):
     if request.method == "POST" or None:
