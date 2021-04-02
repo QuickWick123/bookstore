@@ -22,28 +22,28 @@
   </header>
 </head> -->
 
-<body>
+<body style="background-color:rgb(121, 197, 255);">
   <div id="mainWrapper">
     
     <div id="content">
 
       <section class="sidebar"> 
         <!-- This adds a sidebar with 1 searchbox,2 menusets, each with 4 links -->
-        <input type="text"  id="search" value="search">
         <div id="menubar">
           <nav class="menu">
             <h1><!-- Title for menuset 1 -->ORDER SUMMARY </h1>
             <hr>
             <ul>
               <!-- List of links under menuset 1 -->
-              <li><p title="totalItems">Total Items (Q)</p> </li>
-              <li><p title="subtotal">Subtotal $ {{ cartTotal }}</p></li>
+              <li><p title="totalItems">    Subtotal:</p> </li>
+              <li><p title="subtotal">   $ {{ cartTotal }}</p></li>
             </ul>
           </nav>
         </div>
       </section>
 
       <section class="mainContent">
+        <h1>MY SHOPPING CART</h1>
         <!-- <div class="productRow">Each product row contains info of 3 elements -->
           {% for item in cartItems %}
           <article style="float: left;" class="productInfo"><!-- Each individual product description -->
