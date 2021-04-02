@@ -38,9 +38,9 @@
               View All Details
             </button>
 
-            <button type="button" class="btn btn-secondary" style="width:100%;">
-              ADD TO WISHLIST
-            </button>
+              <a href="{% url 'addCartB' item.book.id %}">
+                    <button class="button buttonAdd" type="submit" name="addCartB">Move to Cart</button>
+                            </a>
 
  
           </div>          

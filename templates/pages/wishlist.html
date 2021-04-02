@@ -20,6 +20,11 @@
     <h3>Active User:</h3>{{users.userName}}
 
         <h3>Primary Wishlist name:</h3>{{users.wishlistName}}
+        <form action="{% url 'updateName1' %}" method = "get">
+          <label for="quantity">Name</label>
+          <input type="string" id="name" name="name" placeholder='{{ user.wishlistName}}'>
+          <input type="submit" value="Submit">
+        </form>
         <h3>Books:</h3>
     {% for item in wishlistItems%}
         <div class="bordered">
