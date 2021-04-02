@@ -22,7 +22,7 @@
             <h4>Book: {{ item.book.title }} &nbsp;</h4>
             <h5>Price: {{ item.book.price }}</h5>
             <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
-                <a href="{% url 'deleteItem' item.book.id %}">
+                <a href="{% url 'deleteItem2' item.book.id %}">
                     <button class="button buttonDelete" type="submit" name="deleteItem">Remove Item</button>
                             </a>
 

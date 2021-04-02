@@ -45,7 +45,7 @@ body {
   top: 20px;
   right: 20px;
   z-index: 1;
-  background: #e74c3c;
+  background: #3ce7c2;
   width: 55px;
   height: 55px;
   padding: 12.5px 0;
@@ -94,7 +94,7 @@ body {
   position: absolute;
   top: -34px;
   left: 0;
-  background: #e74c3c;
+  background: #337ab7;
   padding: 10px 15px;
   color: #FFFFFF;
   font-size: 14px;
@@ -111,7 +111,7 @@ body {
 .post-module .post-content .sub_title {
   margin: 0;
   padding: 0 0 20px;
-  color: #e74c3c;
+  color: #526b99;
   font-size: 20px;
   font-weight: 400;
 }
@@ -187,5 +187,5 @@ body {
   text-decoration: none;
 }
 .container .info span .fa {
-  color: #e74c3c;
+  color: #337ab7;
 }
