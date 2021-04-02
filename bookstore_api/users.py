@@ -207,7 +207,82 @@ class userWish(APIView):
                 print("complete")
                 return Response(user.wishlist, status=status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
-        
+
+
+class userWish2(APIView):
+
+    def get_object(self, id):
+        try:
+            return UserProfiles.objects.get(id=id)
+
+        except UserProfiles.DoesNotExist:
+            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+    def get(self, request, id):
+        user = self.get_object(id)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+    def post(self, request, id):
+        user = self.get_object(id)
+        newItem = request.data
+        wishlist2 = user.wishlist2
+        wishlist2.append(newItem)
+        user.wishlist2 = wishlist2
+        user.save()
+        return Response(user.wishlist2, status=status.HTTP_200_OK)
+
+    def delete(self, request, id):
+
+        user = self.get_object(id)
+        removeIndex = request.data
+        oldWish2 = user.wishlist2
+        for i, dic in enumerate(oldWish2):
+            print(type(dic["book"]), "=", type(removeIndex["book"]))
+            if int(dic["book"]) == int(removeIndex["book"]):
+                oldWish2.pop(i)
+                user.wishlist2 = oldWish2
+                user.save()
+                return Response(user.saveLater, status = status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
+    
+class userWish3(APIView):
+
+    def get_object(self, id):
+        try:
+            return UserProfiles.objects.get(id=id)
+
+        except UserProfiles.DoesNotExist:
+            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+    def get(self, request, id):
+        user = self.get_object(id)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+    def post(self, request, id):
+        user = self.get_object(id)
+        newItem = request.data
+        wishlist3 = user.wishlist3
+        wishlist3.append(newItem)
+        user.wishlist3 = wishlist3
+        user.save()
+        return Response(user.wishlist3, status=status.HTTP_200_OK)
+
+    def delete(self, request, id):
+
+        user = self.get_object(id)
+        removeIndex = request.data
+        oldWish3 = user.wishlist3
+        for i, dic in enumerate(oldWish3):
+            print(type(dic["book"]), "=", type(removeIndex["book"]))
+            if int(dic["book"]) == int(removeIndex["book"]):
+                oldWish3.pop(i)
+                user.wishlist3 = oldWish3
+                user.save()
+                return Response(user.saveLater, status = status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
+
 class userWishToCart(APIView):
 
     def get_object(self, id):
