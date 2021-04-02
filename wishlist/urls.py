@@ -12,10 +12,8 @@ urlpatterns = [
     path('wishlist/m2to3/<int:book_id>', views.moveItem2to3, name='moveItem2to3'),
     path('wishlist/m3to1/<int:book_id>', views.moveItem3to1, name='moveItem3to1'),
     path('wishlist/m3to2/<int:book_id>', views.moveItem3to2, name='moveItem3to2'),
-    path('wishlist/add/', views.add, name='add'),
+    path('wishlist/name1/', views.updateName1, name='updateName1'),
     path('wishlist/a/<int:book_id>', views.addCart, name='addCart'),
     path('wishlist/a2/<int:book_id>', views.addCart2, name='addCart2'),
     path('wishlist/a3/<int:book_id>', views.addCart3, name='addCart3'),
-
-
 ]

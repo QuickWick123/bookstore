@@ -141,8 +141,6 @@ def moveItem3to2(request, book_id):
 
     return wishlist(request)
 
-
-
 def add(request):
     if request.method == "POST" or None:
         form = CreateWishForm(request.POST or None)
@@ -157,7 +155,10 @@ def add(request):
         form = CreateWishForm
         return render(request, 'pages/wishlist_create.html', {'form': form})
 
-# def updateName(request, book_id):
-# updateButton = str(request.GET.get('name'))
-# response = requests.patch('http://localhost:8000/usercart/' + str(activeUser) + "/",
-# data={"book": book_id, "quantity": quantityButton})
+def updateName1(request):
+
+  updateButton = str(request.GET.get('name'))
+  response = requests.patch('http://localhost:8000/userwish/' + str(activeUser) + "/",
+  data={"wishlistName": name })
+
+  return wishlist(request)
