@@ -15,7 +15,7 @@ class Book(models.Model):
     price = models.FloatField(null=True)
     rating = models.IntegerField()
     catetgory = models.CharField(max_length=100)
-    authorName = models.CharField(max_length=100, default="null")
+    authorName = models.CharField(max_length=100)
     publishDate = models.DateField()
     publisher = models.CharField(max_length=100)
     authorbio = models.CharField(max_length=1000)
