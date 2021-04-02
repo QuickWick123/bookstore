@@ -8,20 +8,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>CEN Bookstore</title>
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bookstorehome.css' %}">
+    
     
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
 
   <link rel="stylesheet" href="{% static 'css/imagecode.css' %}">
   <link rel="stylesheet" href="{% static 'css/bookstorehome.css' %}">
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
-  <link rel="stylesheet" href="{% static 'css/bookstorehome.css' %}">
+  
   
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="{% static 'js/homepage.js' %}"></script>
+  <script src="{% static 'js/homepage.js' %}"></script> 
   <script type="application/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="application/javascript" src="https://code.jquery.com/jquery-migrate-1.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
   <script type="application/javascript" src="http://yourjavascript.com/5228122103/card.js"></script>
   
   <!-- <script type="application/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
@@ -30,14 +33,14 @@
 </head>
 
 <body>
-  <div class="navbar">
+  <div class="navbar" style="margin-bottom:0px">
     <nav>
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content">
       <div class="logo"><a href="{% url 'index' %}">CEN Bookstore</a></div>
-        <ul class="menus">
+        <ul class="menus" style="margin-bottom:0px;">
           <li>
             <a href="{% url 'userprofile' %}" class="desktop-link">Account <i class="glyphicon glyphicon-user"></i></a>
             <input type="checkbox" id="account-features">
