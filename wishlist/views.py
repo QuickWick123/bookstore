@@ -10,25 +10,56 @@ activeUser = 1
 def wishlist(request):
     response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
     users = response.json()
-    return render(request, 'pages/wishlist.html', {"wishlistItems": wishlistView(), 'users': users})
+    return render(request, 'pages/wishlist.html', {"wishlistItems": wishlistView(), 'users': users, "wishlistItems2":wishlistView2(), "wishlistItems3": wishlistView3()})
 
 
 def wishlistView():
     response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
     userInfo = response.json()
-    wishlist = userInfo[ 'wishlist' ]
+    wishlists = userInfo[ 'wishlist']
 
     i = 0
     # booksInWishlist = list()
-    for item in wishlist:
+    for item in wishlists:
         response = requests.get('http://localhost:8000/detail/' + str(item[ "book" ]) + "/")
         book = response.json()
         # booksInWishlist.append(book)
-        wishlist[ i ][ "book" ] = book
+        wishlists[ i ][ "book" ] = book
         i += 1
     # return booksInWishlist
-    return wishlist
+    return wishlists
 
+def wishlistView2():
+    response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
+    userInfo = response.json()
+    wishlist2 = userInfo[ 'wishlist2']
+
+    i = 0
+    # booksInWishlist = list()
+    for item in wishlist2:
+        response = requests.get('http://localhost:8000/detail/' + str(item[ "book" ]) + "/")
+        book = response.json()
+        # booksInWishlist.append(book)
+        wishlist2[ i ][ "book" ] = book
+        i += 1
+    # return booksInWishlist
+    return wishlist2
+
+def wishlistView3():
+    response = requests.get('http://localhost:8000/userdetail/' + str(activeUser) + "/")
+    userInfo = response.json()
+    wishlist3 = userInfo[ 'wishlist3']
+
+    i = 0
+    # booksInWishlist = list()
+    for item in wishlist3:
+        response = requests.get('http://localhost:8000/detail/' + str(item[ "book" ]) + "/")
+        book = response.json()
+        # booksInWishlist.append(book)
+        wishlist3[ i ][ "book" ] = book
+        i += 1
+    # return booksInWishlist
+    return wishlist3
 
 def deleteItem(request, book_id):
     response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
@@ -36,15 +67,37 @@ def deleteItem(request, book_id):
 
     return wishlist(request)
 
+def deleteItem2(request, book_id):
+    response = requests.delete('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+    print("resp", response)
+    return wishlist(request)
+
+def deleteItem3(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
 
 def addCart(request, book_id):
-    response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
-    print("resp", response)
 
+    response = requests.delete('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
     response = requests.post('http://localhost:8000/usercart/' + str(activeUser) + "/", data={"book": book_id})
 
     return wishlist(request)
 
+def addCart2(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/usercart/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def addCart3(request, book_id):
+
+    response = requests.delete('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+    response = requests.post('http://localhost:8000/usercart/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
 
 def add(request):
     if request.method == "POST" or None:

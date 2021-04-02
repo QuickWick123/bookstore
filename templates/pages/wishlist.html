@@ -17,7 +17,8 @@
     <h3>Active User:</h3>{{users.userName}}
 
         <h3>Wishlist name:</h3>{{users.wishlistName}}
-    {% for item in wishlistItems %}
+        <h3>Books:</h3>
+    {% for item in wishlistItems%}
         <div class="bordered">
             <h4>Book: {{ item.book.title }} &nbsp;</h4>
             <h5>Price: {{ item.book.price }}</h5>
@@ -28,6 +29,38 @@
 
             <a href="{% url 'addCart' item.book.id %}">
                     <button class="button buttonAdd" type="submit" name="addCart">Move to Cart</button>
+                            </a>
+ </div>
+    {% endfor %}
+    <h3>Wishlist name:</h3>{{users.wishlist2Name}}
+    <h3>Books:</h3>
+    {% for item in wishlistItems2 %}
+        <div class="bordered">
+            <h4>Book: {{ item.book.title }} &nbsp;</h4>
+            <h5>Price: {{ item.book.price }}</h5>
+            <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
+                <a href="{% url 'deleteItem2' item.book.id %}">
+                    <button class="button buttonDelete" type="submit" name="deleteItem2">Remove Item</button>
+                            </a>
+
+            <a href="{% url 'addCart2' item.book.id %}">
+                    <button class="button buttonAdd" type="submit" name="addCart2">Move to Cart</button>
+                            </a>
+ </div>
+    {% endfor %}
+    <h3>Wishlist name:</h3>{{users.wishlist3Name}}
+    <h3>Books:</h3>
+    {% for item in wishlistItems3 %}
+        <div class="bordered">
+            <h4>Book: {{ item.book.title }} &nbsp;</h4>
+            <h5>Price: {{ item.book.price }}</h5>
+            <h5><img src= '{{ item.book.thumbnailUrl }}'></h5>
+                <a href="{% url 'deleteItem3' item.book.id %}">
+                    <button class="button buttonDelete" type="submit" name="deleteItem3">Remove Item</button>
+                            </a>
+
+            <a href="{% url 'addCart3' item.book.id %}">
+                    <button class="button buttonAdd" type="submit" name="addCart3">Move to Cart</button>
                             </a>
  </div>
     {% endfor %}

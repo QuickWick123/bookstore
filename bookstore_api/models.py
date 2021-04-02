@@ -15,7 +15,7 @@ class Book(models.Model):
     price = models.FloatField(null=True)
     rating = models.IntegerField()
     catetgory = models.CharField(max_length=100)
-    authorName = models.CharField(max_length=100)
+    authorName = models.CharField(max_length=100, default="null")
     publishDate = models.DateField()
     publisher = models.CharField(max_length=100)
     authorbio = models.CharField(max_length=1000)
@@ -33,3 +33,8 @@ class UserProfiles(models.Model):
     saveLater = models.JSONField(null=True)
     wishlist = models.JSONField(null=True)
     wishlistName = models.CharField(max_length=100, default="null")
+    wishlist2 = models.JSONField(null=True)
+    wishlist2Name = models.CharField(max_length=100, default="null")
+    wishlist3 = models.JSONField(null=True)
+    wishlist3Name = models.CharField(max_length=100, default="null")
+
