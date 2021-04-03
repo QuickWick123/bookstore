@@ -13,7 +13,8 @@
   <div class="row">
     {% for book1 in book %}
       
-    <div class="col-md-4">
+    <!-- <div class="col-md-4" style = "height:575px;"> -->
+      <div class="col-md-4">
       <div class="post-module">
       <!-- Thumbnail-->
       <div class="thumbnail">
@@ -29,7 +30,7 @@
         <div class="post-content">
           <div class="category"><a href="https://bing.com"><span style="color:white;">Add to cart</span></a></div>
           <h1 class="title">{{ book1.title }}</h1>
-          <h2 class="sub_title"><strong>${{ book1.price }}</strong></h2>
+          <h2 class="sub_title" style="padding-bottom: 0px;"><strong>${{ book1.price }}</strong></h2>
           <p class="description enforcer">{{ book1.shortDescription }}</p>
           <div class="post-meta"><span class="comments"><i class="fa fa-star" style="color: gold"></i><a href="#"> Rating: {{ book1.rating }}</a><br></span>
 
@@ -38,10 +39,23 @@
               View All Details
             </button>
 
+            <!-- <button type="button" class="btn btn-secondary" style="width:100%;">
+              ADD TO WISHLIST
+            </button>
             <button type="button" class="btn btn-secondary" style="width:100%;">
               ADD TO WISHLIST
             </button>
-
+            <button type="button" class="btn btn-secondary" style="width:100%;">
+              ADD TO WISHLIST
+            </button> -->
+            <div class="dropdown" style = "width:100%;  text-align: center;">
+              <button class="dropbtn" style="padding-bottom: 5px;padding-top: 5px;padding-right: 5px;padding-left: 5px;">ADD TO WISHLIST</button>
+              <div class="dropdown-content">
+                <a href="#">Wishlist 1</a>
+                <a href="#">Wishlist 2</a>
+                <a href="#">Wishlist 3</a>
+              </div>
+            </div>
  
           </div>          
           
