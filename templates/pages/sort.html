@@ -5,15 +5,18 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/sort.css' %}">
 -->
+
 {% load myapp_tag %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 {% block content %}
+<body style="min-height: 100vh; background-color:rgb(201, 214, 224);">
+  <section style="margin-left: 25px;">
 <h2>Browse</h2>
-<ul class="sidebar-nav">
+<ul class="sidebar-nav" style="list-style-type: none;">
   <h4>Top Seller</h4>
   <li><a href="{% url 'top_20_sellers' %}">CEN Top Sellers</a></li>
 </ul>
-<ul class="sidebar-nav">
+<ul class="sidebar-nav" style="list-style-type: none;">
   <h4>Genre</h4>
   {% for category in book|slice:"0:4" %}
   <li><a href="{% url 'browse_by_category' category.catetgory %}">{{ category.catetgory}}</a></li>
@@ -216,6 +219,8 @@
     </span>
 </form>
 </div>
+</section>
+</body>
 <!--Pagination code end-->
 {% endblock content %}
 
