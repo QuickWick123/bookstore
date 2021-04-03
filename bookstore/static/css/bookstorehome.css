@@ -48,10 +48,10 @@ img{
     color: rgba(255, 255, 255, 0.5);
 }
 .formbox{
-    background:rgb(34,43,49,0.7);
+    background:rgb(27 91 134 / 38%);
     color:white;
-    flex-basis: 35%;
-    border-top: 10px solid #246d75;
+    flex-basis: 25%;
+    border-top: 10px solid #337ab7;
     padding:2% 3%;
 }
 .formbox *{
@@ -81,7 +81,7 @@ img{
 form .mainbox{
     color: white;
     box-shadow: none;
-    background: #246d75;
+    background: #337ab7;
     height: 2.8rem;
     display: block;
     width: 100%;
