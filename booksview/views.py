@@ -28,13 +28,6 @@ def BookForLoop():
         i += 1
     return book
 
-def addCartB(request, book_id):
-
-    response = requests.post(
-        'http://localhost:8000/usercart/' + str(activeUser) + "/", data={"book": book_id})
-
-    return home(request)
-
     # def perBookView(request, id):
     # get book information using id
     # Book = Book.objects.filter(id=id)

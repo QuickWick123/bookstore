@@ -38,9 +38,18 @@
               View All Details
             </button>
 
-              <a href="{% url 'addCartB' item.book.id %}">
-                    <button class="button buttonAdd" type="submit" name="addCartB">Move to Cart</button>
-                            </a>
+             <h><a href="{% url 'add2wish1' book1.id %}">
+                    <button class="button buttonAdd" type="submit" name="add2wish1">Move to Primary Wishlist</button>
+                            </a></h> 
+
+                            <h>
+                            <a href="{% url 'add2wish2' book1.id %}">
+                              <button class="button buttonAdd" type="submit" name="add2wish2">Move to Secondary Wishlist</button>
+                                      </a></h>
+                            
+                                      <a href="{% url 'add2wish3' book1.id %}">
+                                        <button class="button buttonAdd" type="submit" name="add2wish3">Move to Third Wishlist</button>
+                                                </a></h>
 
  
           </div>          

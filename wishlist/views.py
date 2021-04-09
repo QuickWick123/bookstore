@@ -141,6 +141,25 @@ def moveItem3to2(request, book_id):
 
     return wishlist(request)
 
+def add2wish1(request, book_id):
+
+    response = requests.post('http://localhost:8000/userwish/' + str(activeUser) + "/", data={"book": book_id})
+
+    return wishlist(request)
+
+def add2wish2(request, book_id):
+
+    response = requests.post('http://localhost:8000/userwish2/' + str(activeUser) + "/", data={"book": book_id})
+    
+    return wishlist(request)
+
+def add2wish3(request, book_id):
+
+    response = requests.post('http://localhost:8000/userwish3/' + str(activeUser) + "/", data={"book": book_id})
+    
+    return wishlist(request)
+
+
 def add(request):
     if request.method == "POST" or None:
         form = CreateWishForm(request.POST or None)
@@ -155,10 +174,10 @@ def add(request):
         form = CreateWishForm
         return render(request, 'pages/wishlist_create.html', {'form': form})
 
-def updateName1(request):
+#def updateName1(request, name):
 
-  updateButton = str(request.GET.get('name'))
-  response = requests.patch('http://localhost:8000/userwish/' + str(activeUser) + "/",
-  data={"wishlistName": name })
+ # updateButton = str(request.GET.get('name'))
+  #response = requests.patch('http://localhost:8000/userwish/' + str(activeUser) + "/",
+  #data={"wishlistName": name })
 
-  return wishlist(request)
+  #return wishlist(request)
