@@ -39,18 +39,11 @@
               View All Details
             </button>
 
-             <h><a href="{% url 'add2wish1' book1.id %}">
-                    <button class="button buttonAdd" type="submit" name="add2wish1">Move to Primary Wishlist</button>
-                            </a></h> 
+            
 
-                            <h>
-                            <a href="{% url 'add2wish2' book1.id %}">
-                              <button class="button buttonAdd" type="submit" name="add2wish2">Move to Secondary Wishlist</button>
-                                      </a></h>
+                           
                             
-                                      <a href="{% url 'add2wish3' book1.id %}">
-                                        <button class="button buttonAdd" type="submit" name="add2wish3">Move to Third Wishlist</button>
-                                                </a></h>
+                                     </h>
 
             <!-- <button type="button" class="btn btn-secondary" style="width:100%;">
               ADD TO WISHLIST
@@ -65,8 +58,8 @@
               <button class="dropbtn" style="padding-bottom: 5px;padding-top: 5px;padding-right: 5px;padding-left: 5px;">ADD TO WISHLIST</button>
               <div class="dropdown-content">
                 <a href="{% url 'add2wish1' book1.id %}">Wishlist 1</a>
-                <a href="#">Wishlist 2</a>
-                <a href="#">Wishlist 3</a>
+                <a href="{% url 'add2wish2' book1.id %}">Wishlist 2</a>
+                <a href="{% url 'add2wish3' book1.id %}">Wishlist 3</a>
               </div>
             </div>
  
