@@ -82,41 +82,41 @@ def rating5(request):
 def rating4(request):
       query = request.GET.get('sort_filed')
       if query is not None:
-         rating4_book_list = Book.objects.filter(Q(rating__icontains=4))
+         rating4_book_list = Book.objects.filter(Q(rating__icontains=4) | Q(rating__icontains=5))
          rating4_book_list = sort(request, rating4_book_list)
          return render(request, TEMPLATE_NAME, {'rating4_book_list': rating4_book_list})
       else:
-         rating4_book_list = Book.objects.filter(Q(rating__icontains=4))
+         rating4_book_list = Book.objects.filter(Q(rating__icontains=4) | Q(rating__icontains=5))
          return render(request, TEMPLATE_NAME, {'rating4_book_list': rating4_book_list})
 
 def rating3(request):
       query = request.GET.get('sort_filed')
       if query is not None:
-         rating3_book_list = Book.objects.filter(Q(rating__icontains=3))
+         rating3_book_list = Book.objects.filter(Q(rating__icontains=3) | Q(rating__icontains=4) | Q(rating__icontains=5))
          rating3_book_list = sort(request, rating3_book_list)
          return render(request, TEMPLATE_NAME, {'rating3_book_list': rating3_book_list})
       else: 
-         rating3_book_list = Book.objects.filter(Q(rating__icontains=3))
+         rating3_book_list = Book.objects.filter(Q(rating__icontains=3)| Q(rating__icontains=4) | Q(rating__icontains=5))
          return render(request, TEMPLATE_NAME, {'rating3_book_list': rating3_book_list})
 
 def rating2(request):
       query = request.GET.get('sort_filed')
       if query is not None:
-         rating2_book_list = Book.objects.filter(Q(rating__icontains=2))
+         rating2_book_list = Book.objects.filter(Q(rating__icontains=2) | Q(rating__icontains=3) | Q(rating__icontains=4) | Q(rating__icontains=5))
          rating2_book_list = sort(request, rating2_book_list)
          return render(request, TEMPLATE_NAME, {'rating2_book_list': rating2_book_list})
       else:
-         rating2_book_list = Book.objects.filter(Q(rating__icontains=2))
+         rating2_book_list = Book.objects.filter(Q(rating__icontains=2) | Q(rating__icontains=3) | Q(rating__icontains=4) | Q(rating__icontains=5))
          return render(request, TEMPLATE_NAME, {'rating2_book_list': rating2_book_list})
 
 def rating1(request):
    query = request.GET.get('sort_filed')
    if query is not None:
-      rating1_book_list = Book.objects.filter(Q(rating__icontains=1))
+      rating1_book_list = Book.objects.filter(Q(rating__icontains=2) | Q(rating__icontains=3) | Q(rating__icontains=4) | Q(rating__icontains=5))
       rating1_book_list = sort(request, rating1_book_list)
       return render(request, TEMPLATE_NAME, {'rating1_book_list': rating1_book_list})
    else:
-      rating1_book_list = Book.objects.filter(Q(rating__icontains=1))
+      rating1_book_list = Book.objects.filter(Q(rating__icontains=1) | Q(rating__icontains=2) | Q(rating__icontains=3) | Q(rating__icontains=4) | Q(rating__icontains=5))
       return render(request, TEMPLATE_NAME, {'rating1_book_list': rating1_book_list})
 
 
