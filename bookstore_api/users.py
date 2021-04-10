@@ -51,7 +51,7 @@ class userDetails(APIView):
             return UserProfiles.objects.get(id=id)
 
         except UserProfiles.DoesNotExist:
-            return HttpResponse(status= status.HTTP_204_NO_CONTENT)
+            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
     def get(self, request, id):
         user = self.get_object(id)
@@ -72,7 +72,7 @@ class userDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-#NEW CLASS FOR CART API's POST & DELETE
+# NEW CLASS FOR CART API's POST & DELETE
 class userCart(APIView):
 
     def get_object(self, id):
@@ -80,10 +80,10 @@ class userCart(APIView):
             return UserProfiles.objects.get(id=id)
 
         except UserProfiles.DoesNotExist:
-            return HttpResponse(status= status.HTTP_204_NO_CONTENT)
+            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
     def post(self, request, id):
-        
+
         user = self.get_object(id)
         bookData = request.data
         bookId = bookData["book"]
@@ -93,12 +93,11 @@ class userCart(APIView):
         newItem.update({"book": bookId})
         if "quantity" not in newItem:
             newItem['quantity'] = 1
-       
+
         cart.append(newItem)
         user.cart = cart
         user.save()
-        return Response(user.cart, status = status.HTTP_200_OK)
-
+        return Response(user.cart, status=status.HTTP_200_OK)
 
     def delete(self, request, id):
 
@@ -111,9 +110,48 @@ class userCart(APIView):
                 oldCart.pop(i)
                 user.cart = oldCart
                 user.save()
-                return Response(user.cart, status = status.HTTP_200_OK)
+                return Response(user.cart, status=status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request, id):
+
+        user = self.get_object(id)
+        cart = user.cart
+        updateDic = request.data
+        # print(updateDic)
+        # print(cart)
+        # print(updateDic["quantity"])
+
+        for i, dic in enumerate(cart):
+            print(type(dic["book"]), "=", type(updateDic["book"]))
+            if int(dic["book"]) == int(updateDic["book"]):
+                dic["quantity"] = updateDic["quantity"]
+                user.save()
+                print("SUCCESS!!")
+                return Response(user.cart, status=status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
+
+# NEW CLASS FOR SAVE FOR LATER
+
+
+class userSaveLater(APIView):
+
+    def get_object(self, id):
+        try:
+            return UserProfiles.objects.get(id=id)
+
+        except UserProfiles.DoesNotExist:
+            return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+    def post(self, request, id):  # Posts item to save for later list
+
+        user = self.get_object(id)
+        newItem = request.data
+        laterCart = user.saveLater
+        laterCart.append(newItem)
+        user.saveLater = laterCart
+        user.save()
+        return Response(user.saveLater, status=status.HTTP_200_OK)
 
     def patch(self, request, id):
 
@@ -132,28 +170,6 @@ class userCart(APIView):
                 print("SUCCESS!!")
                 return Response(user.cart, status = status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
-
-#NEW CLASS FOR SAVE FOR LATER
-
-class userSaveLater(APIView):
-
-    def get_object(self, id):
-        try:
-            return UserProfiles.objects.get(id=id)
-
-        except UserProfiles.DoesNotExist:
-            return HttpResponse(status= status.HTTP_204_NO_CONTENT)
-
-
-    def post(self, request, id): #Posts item to save for later list
-        
-        user = self.get_object(id)
-        newItem = request.data
-        laterCart = user.saveLater
-        laterCart.append(newItem)
-        user.saveLater = laterCart
-        user.save()
-        return Response(user.saveLater, status = status.HTTP_200_OK)
 
     def delete(self, request, id):#deletes item from save for later list
 
@@ -206,6 +222,20 @@ class userWish(APIView):
                 user.save()
                 print("complete")
                 return Response(user.wishlist, status=status.HTTP_200_OK)
+        return Response(status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, id):
+
+        user = self.get_object(id)
+        name1 = user.wishlistName
+        updateName1 = request.data
+        # print(updateDic)
+        # print(cart)
+        # print(updateDic["quantity"])
+
+        updateName1 = name1
+        user.save()
+        return Response(user.cart, status = status.HTTP_200_OK)
         return Response(status.HTTP_400_BAD_REQUEST)
 
 
