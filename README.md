@@ -4,7 +4,8 @@ An online web application bookstore that will allow user to purchase the books, 
 # Teammates: 
 **Jermel Stuart, Marjorie Suarez, Michael Trachtenberg, HouyHour Ung, Fabio Velasquez, Bryan Virgil**
 
-# Live Youtube Demo: https://www.youtube.com/watch?v=OKr0qSbyV9o
+# Live Youtube Demo
+https://www.youtube.com/watch?v=OKr0qSbyV9o
 
 ## Getting Started For Windows:
 ### 1. Download/install python 3.6+
