@@ -4,7 +4,7 @@ An online web application bookstore that will allow user to purchase the books, 
 # Teammates: 
 **Jermel Stuart, Marjorie Suarez, Michael Trachtenberg, HouyHour Ung, Fabio Velasquez, Bryan Virgil**
 
-# Live Youtube Demo
+# To see a live demo of the "View Books" section which I developed:
 https://www.youtube.com/watch?v=K8vAbcowUH4
 
 ## Getting Started For Windows:
