@@ -5,7 +5,7 @@ An online web application bookstore that will allow user to purchase the books, 
 **Jermel Stuart, Marjorie Suarez, Michael Trachtenberg, HouyHour Ung, Fabio Velasquez, Bryan Virgil**
 
 # Live Youtube Demo
-https://www.youtube.com/watch?v=OKr0qSbyV9o
+https://www.youtube.com/watch?v=K8vAbcowUH4
 
 ## Getting Started For Windows:
 ### 1. Download/install python 3.6+
