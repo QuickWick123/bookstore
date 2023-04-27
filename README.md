@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=K8vAbcowUH4
 ## Getting Started For Windows:
 ### 1. Download/install python 3.6+
 
-### 2. Create/activate virtual environment CMD. Wiithin project root directory run the commands: 
+### 2. Create/activate virtual environment CMD. Within project root directory run the commands: 
 Windows:
 * py -m venv .\venv  
 * .\venv\Scripts\activate  
